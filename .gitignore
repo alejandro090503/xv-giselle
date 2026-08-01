@@ -5,3 +5,5 @@ Thumbs.db
 .vercel
 _src/
 node_modules/
+
+.env*
