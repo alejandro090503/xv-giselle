@@ -372,7 +372,7 @@ section{padding:64px 26px}
 .btn-wa:hover::after{opacity:1}
 
 /* ── CROSSFADE GALERIA ── */
-#sgal{padding:0;height:220vh}
+#sgal{padding:0;height:360vh}
 .cf-frame{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden}
 .cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity}
 .cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
@@ -688,9 +688,12 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
   <!-- CROSSFADE GALERIA -->
   <section id="sgal">
     <div class="cf-frame">
-      <!-- PENDIENTE: el cliente entrego 2 fotos; el crossfade admite hasta 7 -->
       <img class="cf-img" id="cfImg1" src="./foto-giselle-bebe.jpg" alt="Giselle de ni&ntilde;a">
-      <img class="cf-img" id="cfImg2" src="./foto-giselle.jpg" alt="Giselle">
+      <img class="cf-img" id="cfImg2" src="./foto-giselle-1.jpg" alt="Giselle">
+      <img class="cf-img" id="cfImg3" src="./foto-giselle-2.jpg" alt="Giselle">
+      <img class="cf-img" id="cfImg4" src="./foto-giselle-3.jpg" alt="Giselle">
+      <img class="cf-img" id="cfImg5" src="./foto-giselle-4.jpg" alt="Giselle">
+      <img class="cf-img" id="cfImg6" src="./foto-giselle.jpg" alt="Giselle">
       <div class="cf-fade-top"></div>
       <div class="cf-fade-bot"></div>
     </div>
@@ -821,7 +824,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 </div>
 
 <!-- MUSIC -->
-<audio id="music" preload="none" loop>
+<audio id="music" preload="auto" loop>
   <source src="./audio.mp3" type="audio/mpeg">
 </audio>
 <button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir musica de la invitacion">
@@ -879,6 +882,8 @@ gsap.registerPlugin(ScrollTrigger);
   envVideo.addEventListener('ended',function(){gsap.set(envFlash,{opacity:1});revealInvitation()});
   function openEnvelope(){
     if(opened)return;opened=true;
+    /* el toque que abre el sobre es el gesto que autoriza el audio */
+    try{startMusic()}catch(e){}
     gsap.killTweensOf(envImage);gsap.to(hint,{opacity:0,duration:.2});
     var p=envVideo.play();
     gsap.to(envImage,{opacity:0,duration:.55,ease:'power2.inOut',onComplete:function(){envImage.style.display='none'}});
@@ -973,9 +978,9 @@ function initItinerary(){
 }
 
 function initCrossfade(){
-  gsap.set('#cfImg2',{opacity:0});
-  var breaks=[0.42];
-  var T=0.22;
+  gsap.set('#cfImg2,#cfImg3,#cfImg4,#cfImg5,#cfImg6',{opacity:0});
+  var breaks=[0.10,0.26,0.42,0.58,0.74];
+  var T=0.13;
   var cl=gsap.utils.clamp;
   ScrollTrigger.create({
     trigger:'#sgal',
@@ -986,7 +991,11 @@ function initCrossfade(){
       var p=self.progress;
       var f=function(s){return cl(0,1,(p-s)/T)};
       gsap.set('#cfImg1',{opacity:1-f(breaks[0])});
-      gsap.set('#cfImg2',{opacity:f(breaks[0])});
+      gsap.set('#cfImg2',{opacity:Math.min(f(breaks[0]),1-f(breaks[1]))});
+      gsap.set('#cfImg3',{opacity:Math.min(f(breaks[1]),1-f(breaks[2]))});
+      gsap.set('#cfImg4',{opacity:Math.min(f(breaks[2]),1-f(breaks[3]))});
+      gsap.set('#cfImg5',{opacity:Math.min(f(breaks[3]),1-f(breaks[4]))});
+      gsap.set('#cfImg6',{opacity:f(breaks[4])});
     }
   });
 }
