@@ -22,23 +22,23 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Lato',sans-serif;font-weight:400;font-size:16px;
-  color:#FFFFFF;background:#240a16;line-height:1.7;overflow-x:hidden;
+  color:#FFFFFF;background:#1c0810;line-height:1.7;overflow-x:hidden;
 }
 :root{
-  --bg:#240a16;
+  --bg:#1c0810;
   --accent:#daae00;          /* dorado: acento textual legible sobre el vino */
-  --wine:#a52a4f;            /* vino luminoso para graficos y bordes */
+  --wine:#791a3d;            /* vino oscuro: es el tope, no hay mas claro */
   --accent-deep:#791a3d;     /* vino de la paleta del cliente */
   --accent-soft:rgba(218,174,0,.55);
   --dark:#FFFFFF;
   --text:#FFFFFF;
-  --surface:rgba(139,32,74,.44);
-  --card:rgba(139,32,74,.44);
+  --surface:rgba(94,20,48,.52);
+  --card:rgba(94,20,48,.52);
   --gold:#daae00;
 }
 .wrap{
   max-width:430px;margin:0 auto;position:relative;overflow:clip;z-index:1;
-  background:#240a16;
+  background:#1c0810;
 }
 
 /* ── ENVELOPE ── */
@@ -48,7 +48,7 @@ body{
 }
 #env-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:2}
 #env-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:3;opacity:0}
-#env-flash{position:fixed;inset:0;background:#240a16;z-index:9999;opacity:0;pointer-events:none}
+#env-flash{position:fixed;inset:0;background:#1c0810;z-index:9999;opacity:0;pointer-events:none}
 .envelope-hint{
   position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
   font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
@@ -59,11 +59,11 @@ body{
 #loader{display:none}
 
 /* ── HERO ── */
-.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#240a16}
+.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#1c0810}
 .hero-bg{position:absolute;inset:0;background:url('./bg-hero.jpg') center/cover no-repeat}
 .hero-veil{
   position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(36,10,22,0) 0%,rgba(36,10,22,0) 30%,rgba(36,10,22,.62) 55%,rgba(36,10,22,.94) 80%,#240a16 100%);
+  background:linear-gradient(to bottom,rgba(28,8,16,0) 0%,rgba(28,8,16,0) 30%,rgba(28,8,16,.62) 55%,rgba(28,8,16,.94) 80%,#1c0810 100%);
 }
 .hero-bottom{position:relative;z-index:3;margin-top:auto;padding:0 28px 62px;text-align:center}
 .hero-name{
@@ -111,13 +111,13 @@ section{padding:64px 26px}
   -webkit-mask-composite:source-in;mask-composite:intersect;
 }
 .section-bg>*{position:relative;z-index:1}
-#scd::before{background-image:url('./bg-flores-1.jpg');opacity:.92}
-#sfam::before{background-image:url('./bg-flores-1.jpg');opacity:.85}
-#subic::before{background-image:url('./bg-ubicacion.jpg');opacity:.88}
-#siti::before{background-image:url('./bg-flores-2.jpg');opacity:.90}
-#sdc::before{background-image:url('./bg-dresscode.jpg');opacity:.88}
-#sgifts::before{background-image:url('./bg-flores-2.jpg');opacity:.88}
-#srsvp::before{background-image:url('./bg-flores-1.jpg');opacity:.90}
+#scd::before{background-image:url('./bg-flores-1.jpg');opacity:.40}
+#sfam::before{background-image:url('./bg-flores-1.jpg');opacity:.25}
+#subic::before{background-image:url('./bg-ubicacion.jpg');opacity:.22}
+#siti::before{background-image:url('./bg-flores-2.jpg');opacity:.28}
+#sdc::before{background-image:url('./bg-dresscode.jpg');opacity:.22}
+#sgifts::before{background-image:url('./bg-flores-2.jpg');opacity:.22}
+#srsvp::before{background-image:url('./bg-flores-1.jpg');opacity:.30}
 
 /* ── COUNTDOWN (jennifer flip style) ── */
 #scd{padding-top:48px;padding-bottom:48px}
@@ -151,7 +151,7 @@ section{padding:64px 26px}
 
 /* ── UBICACION ── */
 .loc-card{
-  background:rgba(139,32,74,.44);border-radius:18px;padding:28px 22px;
+  background:rgba(94,20,48,.52);border-radius:18px;padding:28px 22px;
   box-shadow:0 6px 36px rgba(0,0,0,.4);margin-bottom:18px;text-align:center;
   border:1px solid rgba(218,174,0,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
@@ -258,7 +258,7 @@ section{padding:64px 26px}
 /* ── LLUVIA DE SOBRES (azucena style) ── */
 #sgifts{text-align:center}
 .gift-card-lluvia{
-  background:rgba(139,32,74,.44);border-radius:20px;padding:32px 28px;margin-top:28px;
+  background:rgba(94,20,48,.52);border-radius:20px;padding:32px 28px;margin-top:28px;
   box-shadow:0 4px 24px rgba(121,26,61,.35);border:1px solid rgba(218,174,0,.15);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
@@ -309,7 +309,7 @@ section{padding:64px 26px}
 #srsvp{padding:min(14vh,120px) 0}
 .rsvp-card{
   max-width:580px;margin:0 auto;position:relative;
-  background:rgba(139,32,74,.40);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:rgba(52,11,27,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border:1px solid rgba(218,174,0,.25);
   padding:clamp(48px,7vw,80px) clamp(28px,5vw,68px);text-align:center;
 }
@@ -340,12 +340,12 @@ section{padding:64px 26px}
 .rsvp-pases-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
 .rsvp-pases-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:#daae00;line-height:1}
 .rsvp-toggle{display:flex;gap:10px;max-width:340px;margin:0 auto 18px}
-.rsvp-toggle-btn{flex:1;padding:15px 8px;border:1.5px solid rgba(255,255,255,.32);background:rgba(139,32,74,.40);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:700;color:#fff;border-radius:8px;transition:all .25s}
+.rsvp-toggle-btn{flex:1;padding:15px 8px;border:1.5px solid rgba(255,255,255,.32);background:rgba(94,20,48,.48);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:700;color:#fff;border-radius:8px;transition:all .25s}
 .rsvp-toggle-btn:disabled{opacity:.45;cursor:not-allowed}
 .rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(218,174,0,.18);border-color:#daae00;color:#fff}
 .rsvp-toggle-btn.rsvp-toggle-selected-no{background:rgba(201,160,68,.12);border-color:var(--gold);color:var(--gold)}
 .rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:340px;margin:0 auto 18px}
-.rsvp-input{width:100%;padding:15px 18px;border:1.5px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(139,32,74,.50);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;color:#fff;outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
+.rsvp-input{width:100%;padding:15px 18px;border:1.5px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(94,20,48,.58);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;color:#fff;outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
 .rsvp-input:focus{border-color:#daae00;background:rgba(255,255,255,.10)}
 .rsvp-input::placeholder{color:rgba(255,255,255,.4);font-style:italic}
 .btn-wa:disabled{opacity:.55;cursor:not-allowed}
@@ -357,7 +357,7 @@ section{padding:64px 26px}
 }
 .btn-wa{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:16px 42px;min-height:52px;background:rgba(139,32,74,.46);color:#fff;
+  padding:16px 42px;min-height:52px;background:rgba(94,20,48,.54);color:#fff;
   border-radius:50px;border:1.5px solid #daae00;cursor:pointer;
   font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;
   text-transform:uppercase;letter-spacing:3px;
@@ -376,8 +376,8 @@ section{padding:64px 26px}
 #sgal{padding:0;height:360vh}
 .cf-frame{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden}
 .cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity}
-.cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#240a16 0%,rgba(36,10,22,.6) 50%,transparent 100%);pointer-events:none}
-.cf-fade-bot{position:absolute;bottom:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to top,#240a16 0%,rgba(36,10,22,.6) 50%,transparent 100%);pointer-events:none}
+.cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#1c0810 0%,rgba(28,8,16,.6) 50%,transparent 100%);pointer-events:none}
+.cf-fade-bot{position:absolute;bottom:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to top,#1c0810 0%,rgba(28,8,16,.6) 50%,transparent 100%);pointer-events:none}
 
 /* ── FOOTER ── */
 footer{padding:50px 20px 120px;text-align:center}
