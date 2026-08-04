@@ -22,58 +22,59 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Lato',sans-serif;font-weight:400;font-size:16px;
-  color:#FFFFFF;background:#000;line-height:1.7;overflow-x:hidden;
+  color:#FFFFFF;background:#240a16;line-height:1.7;overflow-x:hidden;
 }
 :root{
-  --bg:#000000;
-  --accent:#cf5b7d;          /* vino aclarado: version legible sobre negro (4.8:1) */
+  --bg:#240a16;
+  --accent:#daae00;          /* dorado: acento textual legible sobre el vino */
+  --wine:#a52a4f;            /* vino luminoso para graficos y bordes */
   --accent-deep:#791a3d;     /* vino de la paleta del cliente */
-  --accent-soft:rgba(201,79,116,.55);
+  --accent-soft:rgba(218,174,0,.55);
   --dark:#FFFFFF;
   --text:#FFFFFF;
-  --surface:rgba(255,255,255,.06);
-  --card:rgba(255,255,255,.06);
+  --surface:rgba(139,32,74,.44);
+  --card:rgba(139,32,74,.44);
   --gold:#daae00;
 }
 .wrap{
   max-width:430px;margin:0 auto;position:relative;overflow:clip;z-index:1;
-  background:#000;
+  background:#240a16;
 }
 
 /* ── ENVELOPE ── */
 #envelope-screen{
   position:fixed;inset:0;z-index:10000;
-  overflow:hidden;cursor:pointer;opacity:0;background:#000;
+  overflow:hidden;cursor:pointer;opacity:0;background:#12040a;
 }
 #env-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:2}
 #env-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:3;opacity:0}
-#env-flash{position:fixed;inset:0;background:#000;z-index:9999;opacity:0;pointer-events:none}
+#env-flash{position:fixed;inset:0;background:#240a16;z-index:9999;opacity:0;pointer-events:none}
 .envelope-hint{
   position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
   font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
   color:#fff;opacity:0;cursor:pointer;white-space:nowrap;z-index:10;
-  background:rgba(201,79,116,.35);border:1px solid rgba(255,255,255,.35);
+  background:rgba(121,26,61,.62);border:1px solid rgba(255,255,255,.35);
   padding:10px 22px;border-radius:30px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
 #loader{display:none}
 
 /* ── HERO ── */
-.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#000}
+.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#240a16}
 .hero-bg{position:absolute;inset:0;background:url('./bg-hero.jpg') center/cover no-repeat}
 .hero-veil{
   position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.6) 55%,rgba(0,0,0,.93) 80%,#000 100%);
+  background:linear-gradient(to bottom,rgba(36,10,22,0) 0%,rgba(36,10,22,0) 30%,rgba(36,10,22,.62) 55%,rgba(36,10,22,.94) 80%,#240a16 100%);
 }
 .hero-bottom{position:relative;z-index:3;margin-top:auto;padding:0 28px 62px;text-align:center}
 .hero-name{
   font-family:'Great Vibes',cursive;font-size:130px;line-height:.95;
-  color:#fff;margin-bottom:10px;text-shadow:0 2px 28px rgba(201,79,116,.45);
+  color:#fff;margin-bottom:10px;text-shadow:0 2px 28px rgba(218,174,0,.45);
   transform:translateY(30px);opacity:0;
 }
 .hero-sub{display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateY(16px);opacity:0}
 .xv-num{
   font-family:'Cormorant Garamond',serif;font-weight:400;font-size:68px;letter-spacing:12px;line-height:1;
-  background:linear-gradient(135deg,#fff 0%,rgba(226,150,175,.9) 45%,#fff 100%);
+  background:linear-gradient(135deg,#fff 0%,#daae00 45%,#fff 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   position:relative;display:inline-block;
 }
@@ -110,36 +111,36 @@ section{padding:64px 26px}
   -webkit-mask-composite:source-in;mask-composite:intersect;
 }
 .section-bg>*{position:relative;z-index:1}
-#scd::before{background-image:url('./bg-flores-1.jpg');opacity:.40}
-#sfam::before{background-image:url('./bg-flores-1.jpg');opacity:.25}
-#subic::before{background-image:url('./bg-ubicacion.jpg');opacity:.22}
-#siti::before{background-image:url('./bg-flores-2.jpg');opacity:.28}
-#sdc::before{background-image:url('./bg-dresscode.jpg');opacity:.22}
-#sgifts::before{background-image:url('./bg-flores-2.jpg');opacity:.22}
-#srsvp::before{background-image:url('./bg-flores-1.jpg');opacity:.30}
+#scd::before{background-image:url('./bg-flores-1.jpg');opacity:.92}
+#sfam::before{background-image:url('./bg-flores-1.jpg');opacity:.85}
+#subic::before{background-image:url('./bg-ubicacion.jpg');opacity:.88}
+#siti::before{background-image:url('./bg-flores-2.jpg');opacity:.90}
+#sdc::before{background-image:url('./bg-dresscode.jpg');opacity:.88}
+#sgifts::before{background-image:url('./bg-flores-2.jpg');opacity:.88}
+#srsvp::before{background-image:url('./bg-flores-1.jpg');opacity:.90}
 
 /* ── COUNTDOWN (jennifer flip style) ── */
 #scd{padding-top:48px;padding-bottom:48px}
 .countdown-grid{display:flex;justify-content:center;gap:12px;perspective:1200px}
 .cd-block{
   min-width:70px;padding:24px 7px 20px;text-align:center;
-  background:rgba(255,255,255,.07);border-radius:10px;
+  background:rgba(48,10,26,.82);border-radius:10px;
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(201,79,116,.18);position:relative;overflow:hidden;
+  border:1px solid rgba(218,174,0,.18);position:relative;overflow:hidden;
 }
 .cd-block::before{
   content:'';position:absolute;top:50%;left:12px;right:12px;height:1px;
-  background:linear-gradient(to right,transparent,rgba(201,79,116,.3),transparent);
+  background:linear-gradient(to right,transparent,rgba(218,174,0,.3),transparent);
 }
 .cd-block::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,rgba(201,79,116,.08) 0%,transparent 70%);
+  background:radial-gradient(ellipse at center,rgba(121,26,61,.45) 0%,transparent 70%);
   pointer-events:none;
 }
 .cd-num{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
   font-size:clamp(40px,7vw,60px);line-height:1;
-  background:linear-gradient(135deg,#d4607f 0%,#cf5b7d 40%,#e58ba6 100%);
+  background:linear-gradient(135deg,#f7e08a 0%,#eec420 40%,#fbeeb0 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   transform-style:preserve-3d;
 }
@@ -150,9 +151,9 @@ section{padding:64px 26px}
 
 /* ── UBICACION ── */
 .loc-card{
-  background:rgba(255,255,255,.06);border-radius:18px;padding:28px 22px;
+  background:rgba(139,32,74,.44);border-radius:18px;padding:28px 22px;
   box-shadow:0 6px 36px rgba(0,0,0,.4);margin-bottom:18px;text-align:center;
-  border:1px solid rgba(201,79,116,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(218,174,0,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .loc-card .lt{font-family:'Great Vibes',cursive;font-size:36px;color:#fff;margin-bottom:4px}
 .loc-card .ls{
@@ -180,12 +181,12 @@ section{padding:64px 26px}
 .itv3{position:relative;display:flex;flex-direction:column;align-items:center;padding:10px 0 10px}
 .itv3-track{
   position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;z-index:0;
-  background:linear-gradient(to bottom,transparent 0%,rgba(201,79,116,.35) 10%,rgba(255,255,255,.18) 45%,rgba(201,79,116,.30) 80%,transparent 100%);
+  background:linear-gradient(to bottom,transparent 0%,rgba(218,174,0,.35) 10%,rgba(255,255,255,.18) 45%,rgba(218,174,0,.30) 80%,transparent 100%);
 }
 .itv3-glow{
   position:absolute;left:50%;transform:translateX(-50%);top:0;
   width:5px;height:110px;
-  background:linear-gradient(to bottom,transparent,rgba(201,79,116,.55) 20%,rgba(201,79,116,.90) 50%,rgba(201,79,116,.55) 80%,transparent);
+  background:linear-gradient(to bottom,transparent,rgba(218,174,0,.62) 20%,rgba(218,174,0,.90) 50%,rgba(218,174,0,.55) 80%,transparent);
   filter:blur(3px);border-radius:6px;z-index:1;pointer-events:none;
 }
 .itv3-item{
@@ -194,9 +195,9 @@ section{padding:64px 26px}
 }
 .itv3-gem{
   width:9px;height:9px;
-  background:linear-gradient(135deg,#d4607f 30%,#791a3d);
+  background:linear-gradient(135deg,#f0d878 30%,#791a3d);
   transform:rotate(45deg);border-radius:2px;
-  box-shadow:0 0 0 4px rgba(201,79,116,.12),0 0 18px rgba(201,79,116,.45);
+  box-shadow:0 0 0 4px rgba(218,174,0,.12),0 0 18px rgba(218,174,0,.45);
   margin-bottom:18px;flex-shrink:0;
 }
 .itv3-gem-white{
@@ -204,8 +205,8 @@ section{padding:64px 26px}
   box-shadow:0 0 0 4px rgba(255,255,255,.14),0 0 18px rgba(255,255,255,.35);
 }
 .itv3-gem-dim{
-  background:linear-gradient(135deg,#e58ba6 30%,#5a1230);
-  box-shadow:0 0 0 4px rgba(201,79,116,.10),0 0 18px rgba(201,79,116,.38);
+  background:linear-gradient(135deg,#f7e9a8 30%,#5a1230);
+  box-shadow:0 0 0 4px rgba(218,174,0,.10),0 0 18px rgba(218,174,0,.38);
 }
 .itv3-time{
   font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;
@@ -257,15 +258,15 @@ section{padding:64px 26px}
 /* ── LLUVIA DE SOBRES (azucena style) ── */
 #sgifts{text-align:center}
 .gift-card-lluvia{
-  background:rgba(255,255,255,.06);border-radius:20px;padding:32px 28px;margin-top:28px;
-  box-shadow:0 4px 24px rgba(201,79,116,.08);border:1px solid rgba(201,79,116,.15);
+  background:rgba(139,32,74,.44);border-radius:20px;padding:32px 28px;margin-top:28px;
+  box-shadow:0 4px 24px rgba(121,26,61,.35);border:1px solid rgba(218,174,0,.15);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .lluvia-icon{display:flex;justify-content:center;margin-bottom:20px}
 .lluvia-info-wrap{display:flex;justify-content:center;margin-top:18px}
 @keyframes lluviaBreath{
-  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(201,79,116,.45),0 4px 12px rgba(201,79,116,.15)}
-  50%{transform:scale(1.045);box-shadow:0 0 0 14px rgba(201,79,116,0),0 8px 22px rgba(201,79,116,.28)}
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(218,174,0,.45),0 4px 12px rgba(218,174,0,.15)}
+  50%{transform:scale(1.045);box-shadow:0 0 0 14px rgba(218,174,0,0),0 8px 22px rgba(218,174,0,.28)}
 }
 .lluvia-info-btn{
   display:inline-flex;align-items:center;gap:7px;padding:13px 28px;
@@ -276,7 +277,7 @@ section{padding:64px 26px}
 }
 .lluvia-info-btn:hover{
   background:var(--accent);color:#fff;animation-play-state:paused;
-  transform:scale(1.05);box-shadow:0 8px 22px rgba(201,79,116,.35);
+  transform:scale(1.05);box-shadow:0 8px 22px rgba(218,174,0,.35);
 }
 @media(prefers-reduced-motion:reduce){.lluvia-info-btn{animation:none}}
 
@@ -289,7 +290,7 @@ section{padding:64px 26px}
 }
 .lluvia-modal-overlay.is-open{opacity:1;pointer-events:auto}
 .lluvia-modal{
-  max-width:440px;width:100%;background:rgba(24,6,14,.94);border:1px solid rgba(201,79,116,.25);
+  max-width:440px;width:100%;background:rgba(24,6,14,.94);border:1px solid rgba(218,174,0,.25);
   border-radius:16px;padding:42px 30px 32px;text-align:center;position:relative;
   box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(20px) scale(.95);
   transition:transform .45s cubic-bezier(.2,.7,.3,1.1);
@@ -308,12 +309,12 @@ section{padding:64px 26px}
 #srsvp{padding:min(14vh,120px) 0}
 .rsvp-card{
   max-width:580px;margin:0 auto;position:relative;
-  background:rgba(255,255,255,.05);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border:1px solid rgba(201,79,116,.25);
+  background:rgba(139,32,74,.40);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(218,174,0,.25);
   padding:clamp(48px,7vw,80px) clamp(28px,5vw,68px);text-align:center;
 }
 .rsvp-card::before{
-  content:'';position:absolute;inset:10px;border:1px solid rgba(201,79,116,.15);pointer-events:none;
+  content:'';position:absolute;inset:10px;border:1px solid rgba(218,174,0,.15);pointer-events:none;
 }
 .rsvp-corner{position:absolute;width:52px;height:52px;pointer-events:none}
 .rsvp-corner--tl{top:0;left:0}
@@ -325,27 +326,27 @@ section{padding:64px 26px}
   font-family:'Great Vibes',cursive;font-size:clamp(34px,5vw,52px);
   color:#fff;margin-bottom:18px;line-height:1.15;
 }
-.rsvp-title em{color:#cf5b7d;font-style:normal}
+.rsvp-title em{color:#daae00;font-style:normal}
 .rsvp-text{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(17px,1.8vw,19px);
   color:rgba(255,255,255,.9);line-height:1.8;margin-bottom:32px;
   max-width:420px;margin-left:auto;margin-right:auto;
 }
 .rsvp-divider{display:flex;align-items:center;gap:14px;margin-bottom:28px;max-width:320px;margin-left:auto;margin-right:auto}
-.rsvp-divider::before,.rsvp-divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(201,79,116,.4),transparent)}
-.rsvp-divider-heart{color:#cf5b7d;flex-shrink:0;opacity:.7}
+.rsvp-divider::before,.rsvp-divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(218,174,0,.4),transparent)}
+.rsvp-divider-heart{color:#daae00;flex-shrink:0;opacity:.7}
 #rsvp-pases-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:18px;color:var(--gold);margin:0 auto 16px;line-height:1.5;text-align:center}
-.rsvp-pases-display{max-width:300px;margin:0 auto 20px;padding:14px 26px;background:rgba(201,79,116,.08);border:1px solid rgba(201,79,116,.35);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.rsvp-pases-display{max-width:300px;margin:0 auto 20px;padding:14px 26px;background:rgba(218,174,0,.08);border:1px solid rgba(218,174,0,.35);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 .rsvp-pases-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.rsvp-pases-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:#cf5b7d;line-height:1}
+.rsvp-pases-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:#daae00;line-height:1}
 .rsvp-toggle{display:flex;gap:10px;max-width:340px;margin:0 auto 18px}
-.rsvp-toggle-btn{flex:1;padding:15px 8px;border:1.5px solid rgba(255,255,255,.32);background:rgba(255,255,255,.05);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:700;color:#fff;border-radius:8px;transition:all .25s}
+.rsvp-toggle-btn{flex:1;padding:15px 8px;border:1.5px solid rgba(255,255,255,.32);background:rgba(139,32,74,.40);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:700;color:#fff;border-radius:8px;transition:all .25s}
 .rsvp-toggle-btn:disabled{opacity:.45;cursor:not-allowed}
-.rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(201,79,116,.18);border-color:#cf5b7d;color:#fff}
+.rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(218,174,0,.18);border-color:#daae00;color:#fff}
 .rsvp-toggle-btn.rsvp-toggle-selected-no{background:rgba(201,160,68,.12);border-color:var(--gold);color:var(--gold)}
 .rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:340px;margin:0 auto 18px}
-.rsvp-input{width:100%;padding:15px 18px;border:1.5px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.08);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;color:#fff;outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
-.rsvp-input:focus{border-color:#cf5b7d;background:rgba(255,255,255,.10)}
+.rsvp-input{width:100%;padding:15px 18px;border:1.5px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(139,32,74,.50);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;color:#fff;outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
+.rsvp-input:focus{border-color:#daae00;background:rgba(255,255,255,.10)}
 .rsvp-input::placeholder{color:rgba(255,255,255,.4);font-style:italic}
 .btn-wa:disabled{opacity:.55;cursor:not-allowed}
 #rsvp-feedback{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:600;text-align:center;margin:14px auto 0;max-width:340px;line-height:1.5;min-height:18px;color:var(--gold)}
@@ -356,27 +357,27 @@ section{padding:64px 26px}
 }
 .btn-wa{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:16px 42px;min-height:52px;background:#000;color:#fff;
-  border-radius:50px;border:1.5px solid #cf5b7d;cursor:pointer;
+  padding:16px 42px;min-height:52px;background:rgba(139,32,74,.46);color:#fff;
+  border-radius:50px;border:1.5px solid #daae00;cursor:pointer;
   font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;
   text-transform:uppercase;letter-spacing:3px;
   transition:background .3s,color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden;
-  box-shadow:0 4px 18px rgba(201,79,116,.22);
+  box-shadow:0 4px 18px rgba(121,26,61,.45);
 }
 .btn-wa::after{
   content:'';position:absolute;inset:0;border-radius:50px;
-  background:linear-gradient(135deg,rgba(201,79,116,.18),transparent);
+  background:linear-gradient(135deg,rgba(121,26,61,.55),transparent);
   opacity:0;transition:opacity .3s;
 }
-.btn-wa:hover{background:#cf5b7d;color:#000;transform:translateY(-2px);box-shadow:0 8px 26px rgba(201,79,116,.42)}
+.btn-wa:hover{background:#daae00;color:#000;transform:translateY(-2px);box-shadow:0 8px 26px rgba(218,174,0,.42)}
 .btn-wa:hover::after{opacity:1}
 
 /* ── CROSSFADE GALERIA ── */
 #sgal{padding:0;height:360vh}
 .cf-frame{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden}
 .cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity}
-.cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
-.cf-fade-bot{position:absolute;bottom:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
+.cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#240a16 0%,rgba(36,10,22,.6) 50%,transparent 100%);pointer-events:none}
+.cf-fade-bot{position:absolute;bottom:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to top,#240a16 0%,rgba(36,10,22,.6) 50%,transparent 100%);pointer-events:none}
 
 /* ── FOOTER ── */
 footer{padding:50px 20px 120px;text-align:center}
@@ -390,7 +391,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
   border:none;cursor:pointer;background:transparent;
   opacity:0;transform:scale(.6);pointer-events:none;
   transition:transform .35s cubic-bezier(.2,.7,.2,1);
-  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(201,79,116,.12);
+  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(218,174,0,.12);
 }
 .vinyl-btn.is-ready{opacity:1;transform:scale(1);pointer-events:auto}
 .vinyl-btn:hover{transform:scale(1.1)}
@@ -403,7 +404,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 .vinyl-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
   background:
     radial-gradient(circle,#1a0812 4%,transparent 4.5%),
-    radial-gradient(circle,#cf5b7d 0%,#791a3d 17%,#791a3d 19%,transparent 19.5%),
+    radial-gradient(circle,#daae00 0%,#791a3d 17%,#791a3d 19%,transparent 19.5%),
     repeating-radial-gradient(circle,
       transparent 20%,rgba(255,255,255,.055) 20.8%,transparent 21.5%,
       transparent 24%,rgba(255,255,255,.04) 24.8%,transparent 25.5%,
@@ -445,7 +446,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
   position:absolute;top:50%;left:50%;width:6px;height:6px;
   transform:translate(-50%,-50%);border-radius:50%;
   background:#1a0812;
-  box-shadow:0 0 0 1.5px rgba(201,79,116,.4);
+  box-shadow:0 0 0 1.5px rgba(218,174,0,.4);
 }
 .vinyl-icons{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -470,16 +471,16 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 .vinyl-btn.is-playing .vinyl-tonearm{transform:rotate(-12deg)}
 .vinyl-tonearm-line{
   position:absolute;top:2px;right:4px;width:2px;height:28px;
-  background:linear-gradient(to bottom,#791a3d,#cf5b7d 40%,#791a3d);
+  background:linear-gradient(to bottom,#791a3d,#daae00 40%,#791a3d);
   border-radius:1px;transform:rotate(-5deg);transform-origin:top center;
 }
 .vinyl-tonearm-head{
   position:absolute;bottom:0;right:2px;width:5px;height:6px;
-  background:#cf5b7d;border-radius:0 0 2px 2px;
+  background:#daae00;border-radius:0 0 2px 2px;
 }
 .vinyl-tonearm-pivot{
   position:absolute;top:0;right:2px;width:7px;height:7px;
-  background:radial-gradient(circle,#cf5b7d,#791a3d);border-radius:50%;
+  background:radial-gradient(circle,#daae00,#791a3d);border-radius:50%;
   box-shadow:0 1px 3px rgba(0,0,0,.3);
 }
 </style>
@@ -518,9 +519,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
   <!-- ORNAMENT -->
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -546,9 +547,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -562,13 +563,13 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
         <div class="names">Almendra Guerrero<br><span class="amp">&amp;</span><br>Gonzalo Guerrero Jr.</div>
       </div>
       <div class="hearts-sep rv">
-        <svg class="mini-heart" viewBox="0 0 24 24" fill="#cf5b7d" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#cf5b7d" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <svg class="mini-heart" viewBox="0 0 24 24" fill="#cf5b7d" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
       </div>
@@ -582,9 +583,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -619,9 +620,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -658,9 +659,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -679,9 +680,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -701,9 +702,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -714,10 +715,10 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
     <div class="gift-card-lluvia rv">
       <div class="lluvia-icon">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
-          <rect x="6" y="16" width="52" height="36" rx="6" fill="rgba(255,255,255,.08)" stroke="#cf5b7d" stroke-width="1.8"/>
-          <path d="M6 22 L32 38 L58 22" stroke="#cf5b7d" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M6 52 L24 36" stroke="#cf5b7d" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
-          <path d="M58 52 L40 36" stroke="#cf5b7d" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+          <rect x="6" y="16" width="52" height="36" rx="6" fill="rgba(255,255,255,.08)" stroke="#daae00" stroke-width="1.8"/>
+          <path d="M6 22 L32 38 L58 22" stroke="#daae00" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M6 52 L24 36" stroke="#daae00" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+          <path d="M58 52 L40 36" stroke="#daae00" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
         </svg>
       </div>
       <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px">
@@ -726,13 +727,13 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
       <div class="lluvia-info-wrap">
         <button class="lluvia-info-btn" type="button" onclick="openLluviaModal()">&iquest;Qu&eacute; es?</button>
       </div>
-      <div style="width:50px;height:1px;background:linear-gradient(to right,transparent,rgba(201,79,116,.4),transparent);margin:20px auto"></div>
+      <div style="width:50px;height:1px;background:linear-gradient(to right,transparent,rgba(218,174,0,.4),transparent);margin:20px auto"></div>
       <div style="margin-top:18px">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52" style="display:block;margin:0 auto 10px">
-          <rect x="10" y="20" width="44" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#cf5b7d" stroke-width="1.4"/>
-          <path d="M16 20 L32 10 L48 20" stroke="#cf5b7d" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-          <circle cx="32" cy="36" r="7" stroke="#cf5b7d" stroke-width="1.2" fill="none" opacity=".6"/>
-          <path d="M32 31 L32 41 M27 36 L37 36" stroke="#cf5b7d" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <rect x="10" y="20" width="44" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#daae00" stroke-width="1.4"/>
+          <path d="M16 20 L32 10 L48 20" stroke="#daae00" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="36" r="7" stroke="#daae00" stroke-width="1.2" fill="none" opacity=".6"/>
+          <path d="M32 31 L32 41 M27 36 L37 36" stroke="#daae00" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
         </svg>
         <p style="font-family:'Great Vibes',cursive;font-size:32px;color:#fff;margin-bottom:10px">Zelle</p>
         <p style="font-family:'Lato',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;color:var(--gold);margin-bottom:10px">760-604-7734</p>
@@ -745,26 +746,26 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#cf5b7d" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#cf5b7d" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
   <!-- RSVP (jennifer editorial) -->
   <section id="srsvp" class="section-bg">
     <div class="rsvp-card rv">
-      <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#cf5b7d" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#cf5b7d" opacity=".4"/></svg>
-      <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#cf5b7d" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#cf5b7d" opacity=".4"/></svg>
-      <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#cf5b7d" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#cf5b7d" opacity=".4"/></svg>
-      <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#cf5b7d" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#cf5b7d" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
 
       <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
-        <g stroke="#cf5b7d" stroke-width=".9" opacity=".7" fill="none">
+        <g stroke="#daae00" stroke-width=".9" opacity=".7" fill="none">
           <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
           <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
           <circle cx="160" cy="28" r="5.5"/>
-          <circle cx="160" cy="28" r="2" fill="#cf5b7d" stroke="none"/>
+          <circle cx="160" cy="28" r="2" fill="#daae00" stroke="none"/>
           <path d="M148 28 L154 28" opacity=".5"/>
           <path d="M166 28 L172 28" opacity=".5"/>
           <path d="M154 20 Q160 13 166 20" opacity=".55"/>
@@ -1116,7 +1117,7 @@ function initCrossfade(){
   btnConf.addEventListener('click', function(){
     if(frozen) return;
     if(!rsvpChoice){
-      feedEl.style.color = '#e8788f';
+      feedEl.style.color = '#e0913a';
       feedEl.textContent = 'Por favor selecciona si asistirás o no.';
       return;
     }
@@ -1128,7 +1129,7 @@ function initCrossfade(){
         if(v) nombres.push(v);
       }
       if(nombres.length === 0){
-        feedEl.style.color = '#e8788f';
+        feedEl.style.color = '#e0913a';
         feedEl.textContent = 'Por favor escribe al menos un nombre.';
         return;
       }
@@ -1159,7 +1160,7 @@ function initCrossfade(){
     .catch(function(){
       btnText.textContent = 'Confirmar asistencia';
       btnConf.disabled = false;
-      feedEl.style.color = '#e8788f';
+      feedEl.style.color = '#e0913a';
       feedEl.textContent = 'Error de conexión. Intenta de nuevo.';
     });
   });
