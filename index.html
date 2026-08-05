@@ -171,6 +171,16 @@ section{padding:64px 26px}
   transition:background .3s,transform .3s;border:none;cursor:pointer;
 }
 .btn:hover{background:#791a3d;transform:translateY(-2px)}
+.valet-note{
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  max-width:340px;margin:2px auto 0;padding:14px 18px;
+  border:1px solid rgba(218,174,0,.22);border-radius:14px;
+  background:rgba(94,20,48,.34);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);
+}
+.valet-note svg{width:26px;height:26px;flex-shrink:0}
 
 /* ── CALENDAR ── */
 .cal-c{text-align:center}
@@ -239,6 +249,17 @@ section{padding:64px 26px}
 .dc-avoid .avoid-dot::after{
   content:'';position:absolute;top:50%;left:-2px;right:-2px;height:2px;
   background:rgba(255,255,255,.7);transform:rotate(-45deg);
+}
+.dc-figures{display:flex;align-items:stretch;justify-content:center;gap:0;max-width:420px;margin:0 auto 26px}
+.dc-fig{flex:1;display:flex;flex-direction:column;align-items:center;padding:6px 14px 10px}
+.dc-divider{
+  width:1px;flex-shrink:0;margin:14px 0;
+  background:linear-gradient(to bottom,transparent,rgba(218,174,0,.55) 18%,rgba(218,174,0,.55) 82%,transparent);
+}
+.dc-svg{height:clamp(150px,30vw,190px);width:auto;display:block}
+.dc-fig-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:15px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-top:16px;text-indent:3px;
 }
 
 /* ── FAMILIA ── */
@@ -574,9 +595,24 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
         </svg>
       </div>
       <div class="fam-g rv">
-        <div class="role">Mis Padrinos</div>
-        <!-- PENDIENTE: nombres de los padrinos -->
-        <div class="names">Por confirmar</div>
+        <div class="role">Mis Padrinos de Honor</div>
+        <div class="names">Lisbeth Lucero <span class="amp">&amp;</span> Jes&uacute;s Vel&aacute;squez</div>
+        <div class="names" style="margin-top:8px">M&oacute;nica Velarde <span class="amp">&amp;</span> Manuel Montes</div>
+      </div>
+      <div class="hearts-sep rv">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <div class="fam-g rv">
+        <div class="role">Mi Chambel&aacute;n de Honor</div>
+        <div class="names">Gonzalo Guerrero III</div>
       </div>
     </div>
   </section>
@@ -595,18 +631,29 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
     <div class="loc-card rv" id="lc1">
       <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">17:00</div>
       <div class="ls">Misa de XV A&ntilde;os</div>
-      <div class="lt">Catedral</div>
-      <!-- PENDIENTE: direccion exacta + link de Google Maps de la catedral -->
-      <p style="margin-top:12px">Mexicali, B.C.</p>
-      <p>Direcci&oacute;n por confirmar</p>
+      <div class="lt" style="font-size:30px;line-height:1.25">Catedral de Nuestra<br>Se&ntilde;ora de Guadalupe</div>
+      <p style="margin-top:12px">C. Jos&eacute; Mar&iacute;a Morelos 192, Primera</p>
+      <p>21100 Mexicali, B.C.</p>
+      <a class="btn" href="https://maps.app.goo.gl/G8sam35y5hKmoJG59" target="_blank" rel="noopener">C&oacute;mo llegar</a>
     </div>
     <div class="loc-card rv" id="lc2">
       <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">19:00</div>
       <div class="ls">Recepci&oacute;n</div>
-      <div class="lt">Por confirmar</div>
-      <!-- PENDIENTE: nombre del salon, direccion exacta + link de Google Maps -->
-      <p style="margin-top:12px">Mexicali, B.C.</p>
-      <p>Direcci&oacute;n por confirmar</p>
+      <div class="lt">Salones Palladium</div>
+      <p style="margin-top:12px">Blvd. L&aacute;zaro C&aacute;rdenas 1085, Las Flores</p>
+      <p>21330 Mexicali, B.C.</p>
+      <a class="btn" href="https://maps.app.goo.gl/8pGzwjazEzK1Lfrf6" target="_blank" rel="noopener">C&oacute;mo llegar</a>
+    </div>
+    <div class="valet-note rv">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M8 30 L8 22 L13 12 L35 12 L40 22 L40 30 Z" stroke="#daae00" stroke-width="2" stroke-linejoin="round" fill="rgba(218,174,0,.10)"/>
+        <path d="M8 22 L40 22" stroke="#daae00" stroke-width="1.6"/>
+        <path d="M13 12 L15 22 M35 12 L33 22" stroke="#daae00" stroke-width="1.3" opacity=".65"/>
+        <circle cx="15" cy="30" r="4" stroke="#daae00" stroke-width="2" fill="none"/>
+        <circle cx="33" cy="30" r="4" stroke="#daae00" stroke-width="2" fill="none"/>
+        <path d="M11 36 L37 36" stroke="#daae00" stroke-width="1.3" opacity=".5"/>
+      </svg>
+      Valet Parking disponible
     </div>
   </section>
 
@@ -642,12 +689,23 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
         <div class="itv3-time">19:00</div>
-        <div class="itv3-ev">Fiesta</div>
+        <div class="itv3-ev">Recepci&oacute;n</div>
+        <div class="itv3-sub">Salones Palladium</div>
+      </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem itv3-gem-dim"></div>
+        <div class="itv3-time">19:40</div>
+        <div class="itv3-ev">Vals</div>
+      </div>
+      <div class="itv3-item rv">
+        <div class="itv3-gem itv3-gem-white"></div>
+        <div class="itv3-time">20:00</div>
+        <div class="itv3-ev">Cena</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-dim"></div>
         <div class="itv3-time">21:00</div>
-        <div class="itv3-ev">Cena</div>
+        <div class="itv3-ev">Baile y Celebraci&oacute;n</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
@@ -670,6 +728,95 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
     <div class="eyebrow">Etiqueta</div>
     <h2 class="sec-title">Dress Code</h2>
     <div class="dc-note">Formal</div>
+
+    <div class="dc-figures">
+      <div class="dc-fig">
+        <svg class="dc-svg" viewBox="0 0 110 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
+          <defs>
+            <linearGradient id="gisSuit" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#791a3d" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#791a3d" stop-opacity=".22"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="55" cy="232" rx="36" ry="3.5" fill="#daae00" opacity=".08"/>
+          <ellipse cx="55" cy="28" rx="10.5" ry="12" stroke="rgba(255,255,255,.86)" stroke-width="1.1"/>
+          <path d="M44.5 26 Q44 12 55 11 Q66 12 65.5 26 Q63 22 60 21.5 Q55 21 50 21.5 Q47 22 44.5 26 Z" fill="rgba(255,255,255,.8)"/>
+          <path d="M51 39 L51 47 Q55 49 59 47 L59 39" stroke="rgba(255,255,255,.86)" stroke-width="1" stroke-linecap="round"/>
+          <path d="M30 56 Q40 50 51 48 L55 58 L59 48 Q70 50 80 56 Q83 90 82 130 Q81 165 79 200 L31 200 Q29 165 28 130 Q27 90 30 56 Z" stroke="rgba(255,255,255,.86)" stroke-width="1.3" stroke-linejoin="round" fill="url(#gisSuit)"/>
+          <path d="M51 48 L42 96 Q44 110 51 116 L55 84 Z" stroke="rgba(255,255,255,.55)" stroke-width="1" fill="#791a3d" opacity=".5"/>
+          <path d="M59 48 L68 96 Q66 110 59 116 L55 84 Z" stroke="rgba(255,255,255,.55)" stroke-width="1" fill="#791a3d" opacity=".5"/>
+          <path d="M51 48 L55 64 L59 48" stroke="rgba(255,255,255,.7)" stroke-width=".9" fill="#fff" opacity=".45"/>
+          <path d="M54 64 L52.5 78 L55 82 L57.5 78 L56 64 Z" stroke="#daae00" stroke-width=".7" fill="#791a3d"/>
+          <path d="M51.5 82 L50 116 L55 124 L60 116 L58.5 82 Z" stroke="#daae00" stroke-width=".6" fill="#791a3d"/>
+          <path d="M64 78 L66 82 L68 78 L70 82" stroke="#daae00" stroke-width=".9" stroke-linecap="round" fill="none"/>
+          <circle cx="55" cy="116" r=".9" fill="#daae00"/>
+          <circle cx="55" cy="138" r=".9" fill="#daae00"/>
+          <line x1="34" y1="160" x2="76" y2="160" stroke="#daae00" stroke-width=".7" opacity=".75"/>
+          <line x1="55" y1="64" x2="55" y2="200" stroke="rgba(255,255,255,.45)" stroke-width=".4"/>
+          <path d="M34 200 L40 232 L52 232 L55 208 L58 232 L70 232 L76 200" stroke="rgba(255,255,255,.86)" stroke-width="1.2" stroke-linejoin="round" fill="#791a3d" fill-opacity=".38"/>
+          <ellipse cx="46" cy="234" rx="9" ry="2.3" stroke="rgba(255,255,255,.8)" stroke-width="1" fill="#791a3d" fill-opacity=".55"/>
+          <ellipse cx="64" cy="234" rx="9" ry="2.3" stroke="rgba(255,255,255,.8)" stroke-width="1" fill="#791a3d" fill-opacity=".55"/>
+          <line x1="48" y1="56" x2="51" y2="48" stroke="#daae00" stroke-width=".6" opacity=".7"/>
+          <line x1="62" y1="56" x2="59" y2="48" stroke="#daae00" stroke-width=".6" opacity=".7"/>
+        </svg>
+        <div class="dc-fig-name">Caballeros</div>
+      </div>
+
+      <div class="dc-divider" aria-hidden="true"></div>
+
+      <div class="dc-fig">
+        <svg class="dc-svg" viewBox="0 0 110 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
+          <defs>
+            <linearGradient id="gisDress" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#791a3d" stop-opacity=".55"/>
+              <stop offset="60%" stop-color="#791a3d" stop-opacity=".34"/>
+              <stop offset="100%" stop-color="#daae00" stop-opacity=".10"/>
+            </linearGradient>
+            <linearGradient id="gisBodice" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#791a3d" stop-opacity=".62"/>
+              <stop offset="100%" stop-color="#791a3d" stop-opacity=".40"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="55" cy="232" rx="48" ry="4.5" fill="#daae00" opacity=".07"/>
+          <path d="M42 24 Q38 12 55 9 Q72 12 68 24 Q72 36 66 44 Q72 36 70 28 Q68 22 55 21 Q42 22 40 28 Q38 36 44 44 Q38 36 42 24 Z" fill="rgba(255,255,255,.8)"/>
+          <ellipse cx="55" cy="14" rx="5" ry="3.5" fill="rgba(255,255,255,.8)"/>
+          <circle cx="55" cy="14" r="1.3" fill="#daae00"/>
+          <ellipse cx="55" cy="32" rx="9.5" ry="11.5" stroke="rgba(255,255,255,.86)" stroke-width="1.1"/>
+          <circle cx="46" cy="36" r="1" fill="#daae00"/>
+          <line x1="46" y1="37" x2="46" y2="40" stroke="#daae00" stroke-width=".6"/>
+          <circle cx="46" cy="40.5" r=".8" fill="#daae00"/>
+          <circle cx="64" cy="36" r="1" fill="#daae00"/>
+          <line x1="64" y1="37" x2="64" y2="40" stroke="#daae00" stroke-width=".6"/>
+          <circle cx="64" cy="40.5" r=".8" fill="#daae00"/>
+          <path d="M52 43 L52 50 Q55 52 58 50 L58 43" stroke="rgba(255,255,255,.86)" stroke-width="1" stroke-linecap="round"/>
+          <path d="M48 50 Q55 53 62 50" stroke="#daae00" stroke-width=".7" fill="none"/>
+          <circle cx="55" cy="53" r="1" fill="#daae00"/>
+          <path d="M44 56 Q34 70 30 96 Q29 110 32 116" stroke="rgba(255,255,255,.86)" stroke-width="1.1" stroke-linecap="round"/>
+          <path d="M66 56 Q76 70 80 96 Q81 110 78 116" stroke="rgba(255,255,255,.86)" stroke-width="1.1" stroke-linecap="round"/>
+          <ellipse cx="32" cy="118" rx="2.3" ry="3.2" stroke="rgba(255,255,255,.86)" stroke-width=".8" fill="none"/>
+          <ellipse cx="78" cy="118" rx="2.3" ry="3.2" stroke="rgba(255,255,255,.86)" stroke-width=".8" fill="none"/>
+          <path d="M44 56 Q48 50 55 50 Q62 50 66 56 Q66 76 64 92 L46 92 Q44 76 44 56 Z" stroke="rgba(255,255,255,.7)" stroke-width="1.2" fill="url(#gisBodice)"/>
+          <path d="M50 52 Q55 60 60 52" stroke="rgba(255,255,255,.6)" stroke-width=".7" fill="none"/>
+          <line x1="55" y1="58" x2="55" y2="90" stroke="rgba(255,255,255,.5)" stroke-width=".4"/>
+          <path d="M45 92 L65 92" stroke="#daae00" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="55" cy="92" r="1.5" fill="#daae00"/>
+          <circle cx="55" cy="92" r="2.4" stroke="#daae00" stroke-width=".5" fill="none" opacity=".75"/>
+          <path d="M46 95 Q30 130 14 200 Q10 218 6 232 L104 232 Q100 218 96 200 Q80 130 64 95 Z" stroke="rgba(255,255,255,.75)" stroke-width="1.2" stroke-linejoin="round" fill="url(#gisDress)"/>
+          <path d="M44 110 Q34 160 18 230" stroke="rgba(255,255,255,.55)" stroke-width=".5" fill="none"/>
+          <path d="M55 95 Q55 165 55 230" stroke="rgba(255,255,255,.45)" stroke-width=".4" fill="none"/>
+          <path d="M66 110 Q76 160 92 230" stroke="rgba(255,255,255,.55)" stroke-width=".5" fill="none"/>
+          <path d="M40 130 Q30 180 22 230" stroke="rgba(255,255,255,.35)" stroke-width=".3" fill="none"/>
+          <path d="M70 130 Q80 180 88 230" stroke="rgba(255,255,255,.35)" stroke-width=".3" fill="none"/>
+          <circle cx="40" cy="140" r="1" fill="#daae00" opacity=".75"/>
+          <circle cx="70" cy="155" r="1" fill="#daae00" opacity=".75"/>
+          <circle cx="48" cy="180" r=".9" fill="#daae00" opacity=".7"/>
+          <circle cx="62" cy="195" r="1" fill="#daae00" opacity=".75"/>
+          <path d="M6 232 Q12 226 18 232 Q24 226 30 232 Q36 226 42 232 Q48 226 55 232 Q62 226 68 232 Q74 226 80 232 Q86 226 92 232 Q98 226 104 232" stroke="#daae00" stroke-width=".8" opacity=".7" fill="none"/>
+        </svg>
+        <div class="dc-fig-name">Damas</div>
+      </div>
+    </div>
+
     <div class="dc-avoid">
       Color sugerido <span class="avoid-dot is-ok" style="background:#0e0200;border-color:rgba(255,255,255,.55)"></span> Negro
     </div>
@@ -736,7 +883,8 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
           <path d="M32 31 L32 41 M27 36 L37 36" stroke="#daae00" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
         </svg>
         <p style="font-family:'Great Vibes',cursive;font-size:32px;color:#fff;margin-bottom:10px">Zelle</p>
-        <p style="font-family:'Lato',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;color:var(--gold);margin-bottom:10px">760-604-7734</p>
+        <p style="font-family:'Lato',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;color:var(--gold);margin-bottom:8px">760-604-7734</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;letter-spacing:2px;color:#fff;margin-bottom:12px">Almendra Medina</p>
         <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:16px;color:rgba(255,255,255,.85);line-height:1.7;max-width:300px;margin:0 auto">
           Si prefieres enviar tu detalle a la distancia, este es el medio
         </p>
@@ -1004,8 +1152,8 @@ function initCrossfade(){
 /* ── GOOGLE CALENDAR ── */
 (function(){
   var t=encodeURIComponent('XV Años de Giselle Alessandra Guerrero');
-  var d=encodeURIComponent('Celebración de XV Años: misa 17:00 hrs — recepción 19:00 hrs, Mexicali, B.C.');
-  var l=encodeURIComponent('Mexicali, Baja California, México');
+  var d=encodeURIComponent('Celebración de XV Años: misa 17:00 hrs en la Catedral de Nuestra Señora de Guadalupe — recepción 19:00 hrs en Salones Palladium, Mexicali, B.C.');
+  var l=encodeURIComponent('Salones Palladium, Blvd. Lázaro Cárdenas 1085, Las Flores, 21330 Mexicali, B.C., México');
   document.getElementById('gcalBtn').href=
     'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+t+'&dates=20260920T000000Z/20260920T080000Z&details='+d+'&location='+l;
 })();
