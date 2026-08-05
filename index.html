@@ -22,59 +22,57 @@
 html{scroll-behavior:smooth}
 body{
   font-family:'Lato',sans-serif;font-weight:400;font-size:16px;
-  color:#FFFFFF;background:#1c0810;line-height:1.7;overflow-x:hidden;
+  color:#FFFFFF;background:#000;line-height:1.7;overflow-x:hidden;
 }
 :root{
-  --bg:#1c0810;
-  --accent:#daae00;          /* dorado: acento textual legible sobre el vino */
-  --wine:#791a3d;            /* vino oscuro: es el tope, no hay mas claro */
-  --accent-deep:#791a3d;     /* vino de la paleta del cliente */
-  --accent-soft:rgba(218,174,0,.55);
+  --bg:#000000;
+  --accent:#ff0000;
+  --accent-soft:rgba(255,0,0,.55);
   --dark:#FFFFFF;
   --text:#FFFFFF;
-  --surface:rgba(94,20,48,.52);
-  --card:rgba(94,20,48,.52);
-  --gold:#daae00;
+  --surface:rgba(255,255,255,.06);
+  --card:rgba(255,255,255,.06);
+  --gold:#C9A044;
 }
 .wrap{
   max-width:430px;margin:0 auto;position:relative;overflow:clip;z-index:1;
-  background:#1c0810;
+  background:#000;
 }
 
 /* ── ENVELOPE ── */
 #envelope-screen{
   position:fixed;inset:0;z-index:10000;
-  overflow:hidden;cursor:pointer;opacity:0;background:#12040a;
+  overflow:hidden;cursor:pointer;opacity:0;background:#000;
 }
 #env-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:2}
 #env-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:3;opacity:0}
-#env-flash{position:fixed;inset:0;background:#1c0810;z-index:9999;opacity:0;pointer-events:none}
+#env-flash{position:fixed;inset:0;background:#000;z-index:9999;opacity:0;pointer-events:none}
 .envelope-hint{
   position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
-  font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;letter-spacing:4px;text-transform:uppercase;
+  font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:5px;text-transform:uppercase;
   color:#fff;opacity:0;cursor:pointer;white-space:nowrap;z-index:10;
-  background:rgba(121,26,61,.62);border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,0,0,.35);border:1px solid rgba(255,255,255,.35);
   padding:10px 22px;border-radius:30px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
 #loader{display:none}
 
 /* ── HERO ── */
-.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#1c0810}
+.hero{position:relative;width:100%;min-height:100dvh;display:flex;flex-direction:column;background:#000}
 .hero-bg{position:absolute;inset:0;background:url('./bg-hero.jpg') center/cover no-repeat}
 .hero-veil{
   position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(28,8,16,0) 0%,rgba(28,8,16,0) 30%,rgba(28,8,16,.62) 55%,rgba(28,8,16,.94) 80%,#1c0810 100%);
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.6) 55%,rgba(0,0,0,.93) 80%,#000 100%);
 }
 .hero-bottom{position:relative;z-index:3;margin-top:auto;padding:0 28px 62px;text-align:center}
 .hero-name{
   font-family:'Great Vibes',cursive;font-size:130px;line-height:.95;
-  color:#fff;margin-bottom:10px;text-shadow:0 2px 28px rgba(218,174,0,.45);
+  color:#fff;margin-bottom:10px;text-shadow:0 2px 28px rgba(255,0,0,.45);
   transform:translateY(30px);opacity:0;
 }
 .hero-sub{display:flex;flex-direction:column;align-items:center;gap:4px;transform:translateY(16px);opacity:0}
 .xv-num{
-  font-family:'Cormorant Garamond',serif;font-weight:400;font-size:68px;letter-spacing:12px;line-height:1;
-  background:linear-gradient(135deg,#fff 0%,#daae00 45%,#fff 100%);
+  font-family:'Cormorant Garamond',serif;font-weight:300;font-size:68px;letter-spacing:12px;line-height:1;
+  background:linear-gradient(135deg,#fff 0%,rgba(255,120,120,.85) 45%,#fff 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   position:relative;display:inline-block;
 }
@@ -90,13 +88,13 @@ body{
 .fecha-line{display:flex;align-items:center;justify-content:center;gap:18px}
 .fecha-line .fl-bar{flex:1;max-width:60px;height:1px;background:linear-gradient(to right,transparent,var(--accent));opacity:.45}
 .fecha-line .fl-bar.right{background:linear-gradient(to left,transparent,var(--accent))}
-.fecha-txt{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;letter-spacing:6px;text-transform:uppercase;color:#fff}
+.fecha-txt{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;letter-spacing:7px;text-transform:uppercase;color:#fff}
 
 /* ── SECTIONS base ── */
 section{padding:64px 26px}
 .eyebrow{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;font-weight:600;letter-spacing:5px;
-  text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:8px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:5px;
+  text-transform:uppercase;color:var(--accent);text-align:center;margin-bottom:8px;opacity:.7;
 }
 .sec-title{font-family:'Great Vibes',cursive;font-size:50px;color:#fff;text-align:center;line-height:1.1;margin-bottom:30px}
 
@@ -123,80 +121,70 @@ section{padding:64px 26px}
 #scd{padding-top:48px;padding-bottom:48px}
 .countdown-grid{display:flex;justify-content:center;gap:12px;perspective:1200px}
 .cd-block{
-  min-width:70px;padding:24px 7px 20px;text-align:center;
-  background:rgba(48,10,26,.82);border-radius:10px;
+  min-width:78px;padding:24px 14px 20px;text-align:center;
+  background:rgba(255,255,255,.07);border-radius:10px;
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(218,174,0,.18);position:relative;overflow:hidden;
+  border:1px solid rgba(255,0,0,.18);position:relative;overflow:hidden;
 }
 .cd-block::before{
   content:'';position:absolute;top:50%;left:12px;right:12px;height:1px;
-  background:linear-gradient(to right,transparent,rgba(218,174,0,.3),transparent);
+  background:linear-gradient(to right,transparent,rgba(255,0,0,.3),transparent);
 }
 .cd-block::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,rgba(121,26,61,.45) 0%,transparent 70%);
+  background:radial-gradient(ellipse at center,rgba(255,0,0,.08) 0%,transparent 70%);
   pointer-events:none;
 }
 .cd-num{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
   font-size:clamp(40px,7vw,60px);line-height:1;
-  background:linear-gradient(135deg,#f7e08a 0%,#eec420 40%,#fbeeb0 100%);
+  background:linear-gradient(135deg,#ff4444 0%,#ff0000 40%,#ff6666 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   transform-style:preserve-3d;
 }
 .cd-lbl{
-  font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:8px;
+  font-family:'Cormorant Garamond',serif;font-size:10px;letter-spacing:.5em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px;
 }
 
 /* ── UBICACION ── */
 .loc-card{
-  background:rgba(94,20,48,.52);border-radius:18px;padding:28px 22px;
+  background:rgba(255,255,255,.06);border-radius:18px;padding:28px 22px;
   box-shadow:0 6px 36px rgba(0,0,0,.4);margin-bottom:18px;text-align:center;
-  border:1px solid rgba(218,174,0,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,0,0,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .loc-card .lt{font-family:'Great Vibes',cursive;font-size:36px;color:#fff;margin-bottom:4px}
 .loc-card .ls{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;font-weight:600;letter-spacing:3px;
-  text-transform:uppercase;color:var(--accent);margin-bottom:14px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px;opacity:.7;
 }
-.loc-card p{font-size:17px;margin:5px 0;line-height:1.65;color:#fff;font-weight:500}
+.loc-card p{font-size:15px;margin:3px 0;line-height:1.6;color:#fff;font-weight:400}
 .loc-card .lh{font-family:'Cormorant Garamond',serif;font-size:22px;color:#fff;letter-spacing:3px;margin-top:10px;font-weight:500}
 .map-embed{width:100%;height:200px;border:0;border-radius:12px;margin-top:18px;display:block}
 .btn{
-  display:inline-block;margin-top:16px;padding:14px 32px;
-  background:var(--accent-deep);color:#fff;border-radius:30px;
-  font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;
+  display:inline-block;margin-top:16px;padding:12px 30px;
+  background:var(--accent);color:#fff;border-radius:30px;
+  font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:700;
   text-transform:uppercase;letter-spacing:3px;text-decoration:none;
   transition:background .3s,transform .3s;border:none;cursor:pointer;
 }
-.btn:hover{background:#791a3d;transform:translateY(-2px)}
-.valet-note{
-  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
-  max-width:340px;margin:2px auto 0;padding:14px 18px;
-  border:1px solid rgba(218,174,0,.22);border-radius:14px;
-  background:rgba(94,20,48,.34);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
-  font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);
-}
-.valet-note svg{width:26px;height:26px;flex-shrink:0}
+.btn:hover{background:#cc0000;transform:translateY(-2px)}
 
 /* ── CALENDAR ── */
 .cal-c{text-align:center}
-.cal-c p{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:18px;color:#fff;margin-bottom:18px}
+.cal-c p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#fff;margin-bottom:18px}
 
 /* ── ITINERARIO V3 (cristal-humberto centered glow) ── */
 #siti{overflow:visible;padding-left:24px;padding-right:24px}
 .itv3{position:relative;display:flex;flex-direction:column;align-items:center;padding:10px 0 10px}
 .itv3-track{
   position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;z-index:0;
-  background:linear-gradient(to bottom,transparent 0%,rgba(218,174,0,.35) 10%,rgba(255,255,255,.18) 45%,rgba(218,174,0,.30) 80%,transparent 100%);
+  background:linear-gradient(to bottom,transparent 0%,rgba(255,0,0,.35) 10%,rgba(255,255,255,.18) 45%,rgba(255,0,0,.30) 80%,transparent 100%);
 }
 .itv3-glow{
   position:absolute;left:50%;transform:translateX(-50%);top:0;
   width:5px;height:110px;
-  background:linear-gradient(to bottom,transparent,rgba(218,174,0,.62) 20%,rgba(218,174,0,.90) 50%,rgba(218,174,0,.55) 80%,transparent);
+  background:linear-gradient(to bottom,transparent,rgba(255,0,0,.55) 20%,rgba(255,0,0,.90) 50%,rgba(255,0,0,.55) 80%,transparent);
   filter:blur(3px);border-radius:6px;z-index:1;pointer-events:none;
 }
 .itv3-item{
@@ -205,9 +193,9 @@ section{padding:64px 26px}
 }
 .itv3-gem{
   width:9px;height:9px;
-  background:linear-gradient(135deg,#f0d878 30%,#791a3d);
+  background:linear-gradient(135deg,#ff4444 30%,#990000);
   transform:rotate(45deg);border-radius:2px;
-  box-shadow:0 0 0 4px rgba(218,174,0,.12),0 0 18px rgba(218,174,0,.45);
+  box-shadow:0 0 0 4px rgba(255,0,0,.12),0 0 18px rgba(255,0,0,.45);
   margin-bottom:18px;flex-shrink:0;
 }
 .itv3-gem-white{
@@ -215,61 +203,49 @@ section{padding:64px 26px}
   box-shadow:0 0 0 4px rgba(255,255,255,.14),0 0 18px rgba(255,255,255,.35);
 }
 .itv3-gem-dim{
-  background:linear-gradient(135deg,#f7e9a8 30%,#5a1230);
-  box-shadow:0 0 0 4px rgba(218,174,0,.10),0 0 18px rgba(218,174,0,.38);
+  background:linear-gradient(135deg,#ff6666 30%,#660000);
+  box-shadow:0 0 0 4px rgba(255,0,0,.10),0 0 18px rgba(255,0,0,.38);
 }
 .itv3-time{
-  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;
+  font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;
   letter-spacing:8px;color:#fff;line-height:1;margin-bottom:6px;text-indent:8px;
 }
 .itv3-ev{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:600;
-  color:rgba(255,255,255,.86);letter-spacing:3px;text-transform:uppercase;line-height:1.5;text-indent:3px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;
+  color:rgba(255,255,255,.55);letter-spacing:3px;text-transform:uppercase;line-height:1.5;text-indent:3px;
 }
 .itv3-sub{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;font-weight:600;
-  color:var(--accent);letter-spacing:1px;margin-top:6px;line-height:1.5;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;
+  color:var(--accent);opacity:.75;letter-spacing:1px;margin-top:4px;line-height:1.4;
 }
 
 /* ── DRESS CODE ── */
 .dc-note{
-  text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
-  font-size:20px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:24px;
+  text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:28px;
 }
 .dc-avoid{
-  text-align:center;margin-top:16px;
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
-  font-size:16px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.9);
+  text-align:center;margin-top:10px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);
 }
 .dc-avoid .avoid-dot{
   display:inline-block;width:28px;height:28px;border-radius:50%;vertical-align:middle;margin:0 8px;
   border:2px solid rgba(255,255,255,.4);position:relative;
 }
-.dc-avoid .avoid-dot.is-ok::after{display:none}
 .dc-avoid .avoid-dot::after{
   content:'';position:absolute;top:50%;left:-2px;right:-2px;height:2px;
   background:rgba(255,255,255,.7);transform:rotate(-45deg);
-}
-.dc-figures{display:flex;align-items:stretch;justify-content:center;gap:0;max-width:420px;margin:0 auto 26px}
-.dc-fig{flex:1;display:flex;flex-direction:column;align-items:center;padding:6px 14px 10px}
-.dc-divider{
-  width:1px;flex-shrink:0;margin:14px 0;
-  background:linear-gradient(to bottom,transparent,rgba(218,174,0,.55) 18%,rgba(218,174,0,.55) 82%,transparent);
-}
-.dc-svg{height:clamp(150px,30vw,190px);width:auto;display:block}
-.dc-fig-name{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
-  font-size:15px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-top:16px;text-indent:3px;
 }
 
 /* ── FAMILIA ── */
 .fam{display:flex;flex-direction:column;gap:28px;align-items:center;text-align:center}
 .fam-g .role{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;font-weight:600;letter-spacing:4px;
-  text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:8px;opacity:.7;
 }
-.fam-g .names{font-family:'Cormorant Garamond',serif;font-size:21px;color:#fff;line-height:1.7;font-weight:600}
-.amp{font-style:italic;font-size:17px;font-weight:600;color:var(--accent)}
+.fam-g .names{font-family:'Cormorant Garamond',serif;font-size:19px;color:#fff;line-height:1.65;font-weight:500}
+.amp{font-style:italic;font-size:15px;color:var(--accent);opacity:.7}
 .hearts-sep{display:flex;justify-content:center;gap:14px;padding:4px 0}
 .hearts-sep .mini-heart{
   width:14px;height:14px;opacity:.45;
@@ -279,26 +255,26 @@ section{padding:64px 26px}
 /* ── LLUVIA DE SOBRES (azucena style) ── */
 #sgifts{text-align:center}
 .gift-card-lluvia{
-  background:rgba(94,20,48,.52);border-radius:20px;padding:32px 28px;margin-top:28px;
-  box-shadow:0 4px 24px rgba(121,26,61,.35);border:1px solid rgba(218,174,0,.15);
+  background:rgba(255,255,255,.06);border-radius:20px;padding:32px 28px;margin-top:28px;
+  box-shadow:0 4px 24px rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.15);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .lluvia-icon{display:flex;justify-content:center;margin-bottom:20px}
 .lluvia-info-wrap{display:flex;justify-content:center;margin-top:18px}
 @keyframes lluviaBreath{
-  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(218,174,0,.45),0 4px 12px rgba(218,174,0,.15)}
-  50%{transform:scale(1.045);box-shadow:0 0 0 14px rgba(218,174,0,0),0 8px 22px rgba(218,174,0,.28)}
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,0,0,.45),0 4px 12px rgba(255,0,0,.15)}
+  50%{transform:scale(1.045);box-shadow:0 0 0 14px rgba(255,0,0,0),0 8px 22px rgba(255,0,0,.28)}
 }
 .lluvia-info-btn{
-  display:inline-flex;align-items:center;gap:7px;padding:13px 28px;
+  display:inline-flex;align-items:center;gap:7px;padding:11px 26px;
   background:transparent;border:1.4px solid var(--accent);border-radius:50px;color:var(--accent);
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:15px;letter-spacing:2.5px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;letter-spacing:2.5px;
   text-transform:uppercase;cursor:pointer;transition:background .35s ease,color .35s ease;
   animation:lluviaBreath 2.6s ease-in-out infinite;will-change:transform,box-shadow;
 }
 .lluvia-info-btn:hover{
   background:var(--accent);color:#fff;animation-play-state:paused;
-  transform:scale(1.05);box-shadow:0 8px 22px rgba(218,174,0,.35);
+  transform:scale(1.05);box-shadow:0 8px 22px rgba(255,0,0,.35);
 }
 @media(prefers-reduced-motion:reduce){.lluvia-info-btn{animation:none}}
 
@@ -311,31 +287,31 @@ section{padding:64px 26px}
 }
 .lluvia-modal-overlay.is-open{opacity:1;pointer-events:auto}
 .lluvia-modal{
-  max-width:440px;width:100%;background:rgba(24,6,14,.94);border:1px solid rgba(218,174,0,.25);
+  max-width:440px;width:100%;background:rgba(20,0,0,.92);border:1px solid rgba(255,0,0,.25);
   border-radius:16px;padding:42px 30px 32px;text-align:center;position:relative;
   box-shadow:0 30px 80px rgba(0,0,0,.6);transform:translateY(20px) scale(.95);
   transition:transform .45s cubic-bezier(.2,.7,.3,1.1);
 }
 .lluvia-modal-overlay.is-open .lluvia-modal{transform:translateY(0) scale(1)}
 .lluvia-modal-close{
-  position:absolute;top:6px;right:8px;width:44px;height:44px;border:none;background:transparent;
+  position:absolute;top:10px;right:14px;width:34px;height:34px;border:none;background:transparent;
   color:var(--accent);font-size:26px;line-height:1;cursor:pointer;opacity:.75;
   transition:opacity .2s ease,transform .2s ease;
 }
 .lluvia-modal-close:hover{opacity:1;transform:rotate(90deg)}
 .lluvia-modal-title{font-family:'Great Vibes',cursive;font-size:38px;color:var(--accent);margin:0 0 16px;line-height:1.1}
-.lluvia-modal-text{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;line-height:1.75;color:#fff;margin:0}
+.lluvia-modal-text{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:#fff;margin:0;opacity:.85}
 
 /* ── RSVP (jennifer editorial style) ── */
 #srsvp{padding:min(14vh,120px) 0}
 .rsvp-card{
   max-width:580px;margin:0 auto;position:relative;
-  background:rgba(52,11,27,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border:1px solid rgba(218,174,0,.25);
+  background:rgba(255,255,255,.05);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,0,0,.25);
   padding:clamp(48px,7vw,80px) clamp(28px,5vw,68px);text-align:center;
 }
 .rsvp-card::before{
-  content:'';position:absolute;inset:10px;border:1px solid rgba(218,174,0,.15);pointer-events:none;
+  content:'';position:absolute;inset:10px;border:1px solid rgba(255,0,0,.15);pointer-events:none;
 }
 .rsvp-corner{position:absolute;width:52px;height:52px;pointer-events:none}
 .rsvp-corner--tl{top:0;left:0}
@@ -347,63 +323,63 @@ section{padding:64px 26px}
   font-family:'Great Vibes',cursive;font-size:clamp(34px,5vw,52px);
   color:#fff;margin-bottom:18px;line-height:1.15;
 }
-.rsvp-title em{color:#daae00;font-style:normal}
+.rsvp-title em{color:#ff0000;font-style:normal}
 .rsvp-text{
-  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(17px,1.8vw,19px);
-  color:rgba(255,255,255,.9);line-height:1.8;margin-bottom:32px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,1.6vw,18px);
+  color:rgba(255,255,255,.75);line-height:1.85;margin-bottom:32px;
   max-width:420px;margin-left:auto;margin-right:auto;
 }
 .rsvp-divider{display:flex;align-items:center;gap:14px;margin-bottom:28px;max-width:320px;margin-left:auto;margin-right:auto}
-.rsvp-divider::before,.rsvp-divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(218,174,0,.4),transparent)}
-.rsvp-divider-heart{color:#daae00;flex-shrink:0;opacity:.7}
-#rsvp-pases-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:18px;color:var(--gold);margin:0 auto 16px;line-height:1.5;text-align:center}
-.rsvp-pases-display{max-width:300px;margin:0 auto 20px;padding:14px 26px;background:rgba(218,174,0,.08);border:1px solid rgba(218,174,0,.35);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.rsvp-pases-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-.rsvp-pases-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:#daae00;line-height:1}
+.rsvp-divider::before,.rsvp-divider::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(255,0,0,.4),transparent)}
+.rsvp-divider-heart{color:#ff0000;flex-shrink:0;opacity:.7}
+#rsvp-pases-note{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--gold);margin:0 auto 16px;line-height:1.5;text-align:center}
+.rsvp-pases-display{max-width:300px;margin:0 auto 20px;padding:14px 26px;background:rgba(255,0,0,.08);border:1px solid rgba(255,0,0,.35);border-radius:10px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.rsvp-pases-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.rsvp-pases-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:#ff0000;line-height:1}
 .rsvp-toggle{display:flex;gap:10px;max-width:340px;margin:0 auto 18px}
-.rsvp-toggle-btn{flex:1;padding:15px 8px;border:1.5px solid rgba(255,255,255,.32);background:rgba(94,20,48,.48);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:700;color:#fff;border-radius:8px;transition:all .25s}
+.rsvp-toggle-btn{flex:1;padding:13px 8px;border:1.5px solid rgba(255,255,255,.25);background:rgba(255,255,255,.04);cursor:pointer;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;font-weight:600;color:#fff;border-radius:8px;transition:all .25s}
 .rsvp-toggle-btn:disabled{opacity:.45;cursor:not-allowed}
-.rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(218,174,0,.18);border-color:#daae00;color:#fff}
+.rsvp-toggle-btn.rsvp-toggle-selected-yes{background:rgba(255,0,0,.18);border-color:#ff0000;color:#fff}
 .rsvp-toggle-btn.rsvp-toggle-selected-no{background:rgba(201,160,68,.12);border-color:var(--gold);color:var(--gold)}
 .rsvp-fields{display:flex;flex-direction:column;gap:10px;max-width:340px;margin:0 auto 18px}
-.rsvp-input{width:100%;padding:15px 18px;border:1.5px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(94,20,48,.58);font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;color:#fff;outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
-.rsvp-input:focus{border-color:#daae00;background:rgba(255,255,255,.10)}
+.rsvp-input{width:100%;padding:14px 18px;border:1.5px solid rgba(255,255,255,.22);border-radius:8px;background:rgba(255,255,255,.06);font-family:'Cormorant Garamond',serif;font-size:16px;color:#fff;outline:none;transition:border-color .3s;-webkit-appearance:none;min-height:50px}
+.rsvp-input:focus{border-color:#ff0000;background:rgba(255,255,255,.10)}
 .rsvp-input::placeholder{color:rgba(255,255,255,.4);font-style:italic}
 .btn-wa:disabled{opacity:.55;cursor:not-allowed}
-#rsvp-feedback{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;font-weight:600;text-align:center;margin:14px auto 0;max-width:340px;line-height:1.5;min-height:18px;color:var(--gold)}
+#rsvp-feedback{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;font-weight:600;text-align:center;margin:14px auto 0;max-width:340px;line-height:1.5;min-height:18px;color:var(--gold)}
 .rsvp-deadline{
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-top:28px;
-  font-family:'Lato',sans-serif;font-size:13px;letter-spacing:.16em;line-height:1.6;
-  text-transform:uppercase;color:var(--accent);font-weight:700;text-align:center;
+  display:inline-flex;align-items:center;gap:8px;margin-top:28px;
+  font-family:'Lato',sans-serif;font-size:11px;letter-spacing:.4em;
+  text-transform:uppercase;color:rgba(255,0,0,.7);font-weight:600;
 }
 .btn-wa{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:16px 42px;min-height:52px;background:rgba(94,20,48,.54);color:#fff;
-  border-radius:50px;border:1.5px solid #daae00;cursor:pointer;
-  font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:700;
+  padding:15px 40px;min-height:48px;background:#000;color:#fff;
+  border-radius:50px;border:1.5px solid #ff0000;cursor:pointer;
+  font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;
   text-transform:uppercase;letter-spacing:3px;
   transition:background .3s,color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden;
-  box-shadow:0 4px 18px rgba(121,26,61,.45);
+  box-shadow:0 4px 18px rgba(255,0,0,.22);
 }
 .btn-wa::after{
   content:'';position:absolute;inset:0;border-radius:50px;
-  background:linear-gradient(135deg,rgba(121,26,61,.55),transparent);
+  background:linear-gradient(135deg,rgba(255,0,0,.18),transparent);
   opacity:0;transition:opacity .3s;
 }
-.btn-wa:hover{background:#daae00;color:#000;transform:translateY(-2px);box-shadow:0 8px 26px rgba(218,174,0,.42)}
+.btn-wa:hover{background:#ff0000;color:#000;transform:translateY(-2px);box-shadow:0 8px 26px rgba(255,0,0,.42)}
 .btn-wa:hover::after{opacity:1}
 
 /* ── CROSSFADE GALERIA ── */
-#sgal{padding:0;height:360vh}
+#sgal{padding:0;height:420vh}
 .cf-frame{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden}
 .cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity}
-.cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#1c0810 0%,rgba(28,8,16,.6) 50%,transparent 100%);pointer-events:none}
-.cf-fade-bot{position:absolute;bottom:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to top,#1c0810 0%,rgba(28,8,16,.6) 50%,transparent 100%);pointer-events:none}
+.cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
+.cf-fade-bot{position:absolute;bottom:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to top,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
 
 /* ── FOOTER ── */
-footer{padding:50px 20px 120px;text-align:center}
+footer{padding:50px 20px;text-align:center}
 footer .fn{font-family:'Great Vibes',cursive;font-size:50px;color:#fff}
-footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:15px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-top:8px}
+footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-top:6px;opacity:.7}
 
 /* ── VINYL MUSIC BUTTON ── */
 .vinyl-btn{
@@ -412,7 +388,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
   border:none;cursor:pointer;background:transparent;
   opacity:0;transform:scale(.6);pointer-events:none;
   transition:transform .35s cubic-bezier(.2,.7,.2,1);
-  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(218,174,0,.12);
+  box-shadow:0 4px 18px rgba(0,0,0,.45),0 0 0 1px rgba(255,0,0,.12);
 }
 .vinyl-btn.is-ready{opacity:1;transform:scale(1);pointer-events:auto}
 .vinyl-btn:hover{transform:scale(1.1)}
@@ -424,8 +400,8 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 @keyframes vinylSpin{to{transform:rotate(360deg)}}
 .vinyl-disc{width:100%;height:100%;border-radius:50%;overflow:hidden;position:relative;
   background:
-    radial-gradient(circle,#1a0812 4%,transparent 4.5%),
-    radial-gradient(circle,#daae00 0%,#791a3d 17%,#791a3d 19%,transparent 19.5%),
+    radial-gradient(circle,#1a0000 4%,transparent 4.5%),
+    radial-gradient(circle,#ff0000 0%,#cc0000 17%,#990000 19%,transparent 19.5%),
     repeating-radial-gradient(circle,
       transparent 20%,rgba(255,255,255,.055) 20.8%,transparent 21.5%,
       transparent 24%,rgba(255,255,255,.04) 24.8%,transparent 25.5%,
@@ -448,7 +424,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
       transparent 92%,rgba(255,255,255,.055) 92.8%,transparent 93.5%,
       transparent 96%,rgba(255,255,255,.04) 96.8%,transparent 97.5%
     ),
-    radial-gradient(circle,#1a0812 0%,#120609 60%,#1a0812 100%);
+    radial-gradient(circle,#1a0000 0%,#110000 60%,#1a0000 100%);
   box-shadow:inset 0 0 8px rgba(0,0,0,.4);
 }
 .vinyl-sheen{
@@ -458,7 +434,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 }
 .vinyl-label-text{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-family:'Great Vibes',cursive;font-size:11px;color:#1a0812;
+  font-family:'Great Vibes',cursive;font-size:11px;color:#1a0000;
   text-align:center;line-height:1.1;opacity:.7;
   pointer-events:none;width:26px;
 }
@@ -466,8 +442,8 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 .vinyl-hole{
   position:absolute;top:50%;left:50%;width:6px;height:6px;
   transform:translate(-50%,-50%);border-radius:50%;
-  background:#1a0812;
-  box-shadow:0 0 0 1.5px rgba(218,174,0,.4);
+  background:#1a0000;
+  box-shadow:0 0 0 1.5px rgba(255,0,0,.4);
 }
 .vinyl-icons{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -492,17 +468,43 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 .vinyl-btn.is-playing .vinyl-tonearm{transform:rotate(-12deg)}
 .vinyl-tonearm-line{
   position:absolute;top:2px;right:4px;width:2px;height:28px;
-  background:linear-gradient(to bottom,#791a3d,#daae00 40%,#791a3d);
+  background:linear-gradient(to bottom,#990000,#ff0000 40%,#990000);
   border-radius:1px;transform:rotate(-5deg);transform-origin:top center;
 }
 .vinyl-tonearm-head{
   position:absolute;bottom:0;right:2px;width:5px;height:6px;
-  background:#daae00;border-radius:0 0 2px 2px;
+  background:#ff0000;border-radius:0 0 2px 2px;
 }
 .vinyl-tonearm-pivot{
   position:absolute;top:0;right:2px;width:7px;height:7px;
-  background:radial-gradient(circle,#daae00,#791a3d);border-radius:50%;
+  background:radial-gradient(circle,#ff0000,#990000);border-radius:50%;
   box-shadow:0 1px 3px rgba(0,0,0,.3);
+}
+
+/* ── AÑADIDOS DE ESTA INVITACION (paleta de la plantilla) ── */
+.dc-avoid .avoid-dot.is-ok::after{display:none}
+.valet-note{
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  max-width:340px;margin:2px auto 0;padding:14px 18px;
+  border:1px solid rgba(201,160,68,.30);border-radius:14px;
+  background:var(--surface);
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
+}
+.valet-note svg{width:26px;height:26px;flex-shrink:0}
+.dc-figures{display:flex;align-items:flex-end;justify-content:center;gap:0;max-width:420px;margin:0 auto 26px}
+.dc-fig{flex:1;display:flex;flex-direction:column;align-items:center;padding:6px 12px 10px}
+.dc-fig img{
+  height:clamp(150px,32vw,196px);width:auto;display:block;
+  filter:drop-shadow(0 10px 26px rgba(0,0,0,.55));
+}
+.dc-divider{
+  width:1px;flex-shrink:0;align-self:stretch;margin:18px 0;
+  background:linear-gradient(to bottom,transparent,rgba(201,160,68,.55) 18%,rgba(201,160,68,.55) 82%,transparent);
+}
+.dc-fig-name{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:14px;text-indent:3px;
 }
 </style>
 </head>
@@ -540,9 +542,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
   <!-- ORNAMENT -->
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -568,9 +570,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -584,13 +586,13 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
         <div class="names">Almendra Guerrero<br><span class="amp">&amp;</span><br>Gonzalo Guerrero Jr.</div>
       </div>
       <div class="hearts-sep rv">
-        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
       </div>
@@ -600,13 +602,13 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
         <div class="names" style="margin-top:8px">M&oacute;nica Velarde <span class="amp">&amp;</span> Manuel Montes</div>
       </div>
       <div class="hearts-sep rv">
-        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart center" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <svg class="mini-heart" viewBox="0 0 24 24" fill="#daae00" xmlns="http://www.w3.org/2000/svg">
+        <svg class="mini-heart" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
       </div>
@@ -619,9 +621,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -646,12 +648,12 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
     </div>
     <div class="valet-note rv">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8 30 L8 22 L13 12 L35 12 L40 22 L40 30 Z" stroke="#daae00" stroke-width="2" stroke-linejoin="round" fill="rgba(218,174,0,.10)"/>
-        <path d="M8 22 L40 22" stroke="#daae00" stroke-width="1.6"/>
-        <path d="M13 12 L15 22 M35 12 L33 22" stroke="#daae00" stroke-width="1.3" opacity=".65"/>
-        <circle cx="15" cy="30" r="4" stroke="#daae00" stroke-width="2" fill="none"/>
-        <circle cx="33" cy="30" r="4" stroke="#daae00" stroke-width="2" fill="none"/>
-        <path d="M11 36 L37 36" stroke="#daae00" stroke-width="1.3" opacity=".5"/>
+        <path d="M8 30 L8 22 L13 12 L35 12 L40 22 L40 30 Z" stroke="#C9A044" stroke-width="2" stroke-linejoin="round" fill="rgba(218,174,0,.10)"/>
+        <path d="M8 22 L40 22" stroke="#C9A044" stroke-width="1.6"/>
+        <path d="M13 12 L15 22 M35 12 L33 22" stroke="#C9A044" stroke-width="1.3" opacity=".65"/>
+        <circle cx="15" cy="30" r="4" stroke="#C9A044" stroke-width="2" fill="none"/>
+        <circle cx="33" cy="30" r="4" stroke="#C9A044" stroke-width="2" fill="none"/>
+        <path d="M11 36 L37 36" stroke="#C9A044" stroke-width="1.3" opacity=".5"/>
       </svg>
       Valet Parking disponible
     </div>
@@ -667,9 +669,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -717,9 +719,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -731,88 +733,12 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
     <div class="dc-figures">
       <div class="dc-fig">
-        <svg class="dc-svg" viewBox="0 0 110 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
-          <defs>
-            <linearGradient id="gisSuit" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#791a3d" stop-opacity=".55"/>
-              <stop offset="100%" stop-color="#791a3d" stop-opacity=".22"/>
-            </linearGradient>
-          </defs>
-          <ellipse cx="55" cy="232" rx="36" ry="3.5" fill="#daae00" opacity=".08"/>
-          <ellipse cx="55" cy="28" rx="10.5" ry="12" stroke="rgba(255,255,255,.86)" stroke-width="1.1"/>
-          <path d="M44.5 26 Q44 12 55 11 Q66 12 65.5 26 Q63 22 60 21.5 Q55 21 50 21.5 Q47 22 44.5 26 Z" fill="rgba(255,255,255,.8)"/>
-          <path d="M51 39 L51 47 Q55 49 59 47 L59 39" stroke="rgba(255,255,255,.86)" stroke-width="1" stroke-linecap="round"/>
-          <path d="M30 56 Q40 50 51 48 L55 58 L59 48 Q70 50 80 56 Q83 90 82 130 Q81 165 79 200 L31 200 Q29 165 28 130 Q27 90 30 56 Z" stroke="rgba(255,255,255,.86)" stroke-width="1.3" stroke-linejoin="round" fill="url(#gisSuit)"/>
-          <path d="M51 48 L42 96 Q44 110 51 116 L55 84 Z" stroke="rgba(255,255,255,.55)" stroke-width="1" fill="#791a3d" opacity=".5"/>
-          <path d="M59 48 L68 96 Q66 110 59 116 L55 84 Z" stroke="rgba(255,255,255,.55)" stroke-width="1" fill="#791a3d" opacity=".5"/>
-          <path d="M51 48 L55 64 L59 48" stroke="rgba(255,255,255,.7)" stroke-width=".9" fill="#fff" opacity=".45"/>
-          <path d="M54 64 L52.5 78 L55 82 L57.5 78 L56 64 Z" stroke="#daae00" stroke-width=".7" fill="#791a3d"/>
-          <path d="M51.5 82 L50 116 L55 124 L60 116 L58.5 82 Z" stroke="#daae00" stroke-width=".6" fill="#791a3d"/>
-          <path d="M64 78 L66 82 L68 78 L70 82" stroke="#daae00" stroke-width=".9" stroke-linecap="round" fill="none"/>
-          <circle cx="55" cy="116" r=".9" fill="#daae00"/>
-          <circle cx="55" cy="138" r=".9" fill="#daae00"/>
-          <line x1="34" y1="160" x2="76" y2="160" stroke="#daae00" stroke-width=".7" opacity=".75"/>
-          <line x1="55" y1="64" x2="55" y2="200" stroke="rgba(255,255,255,.45)" stroke-width=".4"/>
-          <path d="M34 200 L40 232 L52 232 L55 208 L58 232 L70 232 L76 200" stroke="rgba(255,255,255,.86)" stroke-width="1.2" stroke-linejoin="round" fill="#791a3d" fill-opacity=".38"/>
-          <ellipse cx="46" cy="234" rx="9" ry="2.3" stroke="rgba(255,255,255,.8)" stroke-width="1" fill="#791a3d" fill-opacity=".55"/>
-          <ellipse cx="64" cy="234" rx="9" ry="2.3" stroke="rgba(255,255,255,.8)" stroke-width="1" fill="#791a3d" fill-opacity=".55"/>
-          <line x1="48" y1="56" x2="51" y2="48" stroke="#daae00" stroke-width=".6" opacity=".7"/>
-          <line x1="62" y1="56" x2="59" y2="48" stroke="#daae00" stroke-width=".6" opacity=".7"/>
-        </svg>
+        <img src="./caballero.png" alt="Caballero de traje formal negro" loading="lazy">
         <div class="dc-fig-name">Caballeros</div>
       </div>
-
       <div class="dc-divider" aria-hidden="true"></div>
-
       <div class="dc-fig">
-        <svg class="dc-svg" viewBox="0 0 110 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
-          <defs>
-            <linearGradient id="gisDress" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#791a3d" stop-opacity=".55"/>
-              <stop offset="60%" stop-color="#791a3d" stop-opacity=".34"/>
-              <stop offset="100%" stop-color="#daae00" stop-opacity=".10"/>
-            </linearGradient>
-            <linearGradient id="gisBodice" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#791a3d" stop-opacity=".62"/>
-              <stop offset="100%" stop-color="#791a3d" stop-opacity=".40"/>
-            </linearGradient>
-          </defs>
-          <ellipse cx="55" cy="232" rx="48" ry="4.5" fill="#daae00" opacity=".07"/>
-          <path d="M42 24 Q38 12 55 9 Q72 12 68 24 Q72 36 66 44 Q72 36 70 28 Q68 22 55 21 Q42 22 40 28 Q38 36 44 44 Q38 36 42 24 Z" fill="rgba(255,255,255,.8)"/>
-          <ellipse cx="55" cy="14" rx="5" ry="3.5" fill="rgba(255,255,255,.8)"/>
-          <circle cx="55" cy="14" r="1.3" fill="#daae00"/>
-          <ellipse cx="55" cy="32" rx="9.5" ry="11.5" stroke="rgba(255,255,255,.86)" stroke-width="1.1"/>
-          <circle cx="46" cy="36" r="1" fill="#daae00"/>
-          <line x1="46" y1="37" x2="46" y2="40" stroke="#daae00" stroke-width=".6"/>
-          <circle cx="46" cy="40.5" r=".8" fill="#daae00"/>
-          <circle cx="64" cy="36" r="1" fill="#daae00"/>
-          <line x1="64" y1="37" x2="64" y2="40" stroke="#daae00" stroke-width=".6"/>
-          <circle cx="64" cy="40.5" r=".8" fill="#daae00"/>
-          <path d="M52 43 L52 50 Q55 52 58 50 L58 43" stroke="rgba(255,255,255,.86)" stroke-width="1" stroke-linecap="round"/>
-          <path d="M48 50 Q55 53 62 50" stroke="#daae00" stroke-width=".7" fill="none"/>
-          <circle cx="55" cy="53" r="1" fill="#daae00"/>
-          <path d="M44 56 Q34 70 30 96 Q29 110 32 116" stroke="rgba(255,255,255,.86)" stroke-width="1.1" stroke-linecap="round"/>
-          <path d="M66 56 Q76 70 80 96 Q81 110 78 116" stroke="rgba(255,255,255,.86)" stroke-width="1.1" stroke-linecap="round"/>
-          <ellipse cx="32" cy="118" rx="2.3" ry="3.2" stroke="rgba(255,255,255,.86)" stroke-width=".8" fill="none"/>
-          <ellipse cx="78" cy="118" rx="2.3" ry="3.2" stroke="rgba(255,255,255,.86)" stroke-width=".8" fill="none"/>
-          <path d="M44 56 Q48 50 55 50 Q62 50 66 56 Q66 76 64 92 L46 92 Q44 76 44 56 Z" stroke="rgba(255,255,255,.7)" stroke-width="1.2" fill="url(#gisBodice)"/>
-          <path d="M50 52 Q55 60 60 52" stroke="rgba(255,255,255,.6)" stroke-width=".7" fill="none"/>
-          <line x1="55" y1="58" x2="55" y2="90" stroke="rgba(255,255,255,.5)" stroke-width=".4"/>
-          <path d="M45 92 L65 92" stroke="#daae00" stroke-width="1.3" stroke-linecap="round"/>
-          <circle cx="55" cy="92" r="1.5" fill="#daae00"/>
-          <circle cx="55" cy="92" r="2.4" stroke="#daae00" stroke-width=".5" fill="none" opacity=".75"/>
-          <path d="M46 95 Q30 130 14 200 Q10 218 6 232 L104 232 Q100 218 96 200 Q80 130 64 95 Z" stroke="rgba(255,255,255,.75)" stroke-width="1.2" stroke-linejoin="round" fill="url(#gisDress)"/>
-          <path d="M44 110 Q34 160 18 230" stroke="rgba(255,255,255,.55)" stroke-width=".5" fill="none"/>
-          <path d="M55 95 Q55 165 55 230" stroke="rgba(255,255,255,.45)" stroke-width=".4" fill="none"/>
-          <path d="M66 110 Q76 160 92 230" stroke="rgba(255,255,255,.55)" stroke-width=".5" fill="none"/>
-          <path d="M40 130 Q30 180 22 230" stroke="rgba(255,255,255,.35)" stroke-width=".3" fill="none"/>
-          <path d="M70 130 Q80 180 88 230" stroke="rgba(255,255,255,.35)" stroke-width=".3" fill="none"/>
-          <circle cx="40" cy="140" r="1" fill="#daae00" opacity=".75"/>
-          <circle cx="70" cy="155" r="1" fill="#daae00" opacity=".75"/>
-          <circle cx="48" cy="180" r=".9" fill="#daae00" opacity=".7"/>
-          <circle cx="62" cy="195" r="1" fill="#daae00" opacity=".75"/>
-          <path d="M6 232 Q12 226 18 232 Q24 226 30 232 Q36 226 42 232 Q48 226 55 232 Q62 226 68 232 Q74 226 80 232 Q86 226 92 232 Q98 226 104 232" stroke="#daae00" stroke-width=".8" opacity=".7" fill="none"/>
-        </svg>
+        <img src="./dama.png" alt="Dama de vestido formal largo" loading="lazy">
         <div class="dc-fig-name">Damas</div>
       </div>
     </div>
@@ -827,9 +753,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -849,9 +775,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
@@ -862,10 +788,10 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
     <div class="gift-card-lluvia rv">
       <div class="lluvia-icon">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
-          <rect x="6" y="16" width="52" height="36" rx="6" fill="rgba(255,255,255,.08)" stroke="#daae00" stroke-width="1.8"/>
-          <path d="M6 22 L32 38 L58 22" stroke="#daae00" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M6 52 L24 36" stroke="#daae00" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
-          <path d="M58 52 L40 36" stroke="#daae00" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+          <rect x="6" y="16" width="52" height="36" rx="6" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.8"/>
+          <path d="M6 22 L32 38 L58 22" stroke="#ff0000" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M6 52 L24 36" stroke="#ff0000" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
+          <path d="M58 52 L40 36" stroke="#ff0000" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
         </svg>
       </div>
       <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px">
@@ -877,10 +803,10 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
       <div style="width:50px;height:1px;background:linear-gradient(to right,transparent,rgba(218,174,0,.4),transparent);margin:20px auto"></div>
       <div style="margin-top:18px">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52" style="display:block;margin:0 auto 10px">
-          <rect x="10" y="20" width="44" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#daae00" stroke-width="1.4"/>
-          <path d="M16 20 L32 10 L48 20" stroke="#daae00" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-          <circle cx="32" cy="36" r="7" stroke="#daae00" stroke-width="1.2" fill="none" opacity=".6"/>
-          <path d="M32 31 L32 41 M27 36 L37 36" stroke="#daae00" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          <rect x="10" y="20" width="44" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.4"/>
+          <path d="M16 20 L32 10 L48 20" stroke="#ff0000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <circle cx="32" cy="36" r="7" stroke="#ff0000" stroke-width="1.2" fill="none" opacity=".6"/>
+          <path d="M32 31 L32 41 M27 36 L37 36" stroke="#ff0000" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
         </svg>
         <p style="font-family:'Great Vibes',cursive;font-size:32px;color:#fff;margin-bottom:10px">Zelle</p>
         <p style="font-family:'Lato',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;color:var(--gold);margin-bottom:8px">760-604-7734</p>
@@ -894,26 +820,26 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
 
   <div class="orn rv">
     <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="8" y1="15" x2="52" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
-      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#daae00" opacity=".45"/>
-      <line x1="78" y1="15" x2="122" y2="15" stroke="#daae00" stroke-width=".8" opacity=".3"/>
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
     </svg>
   </div>
 
   <!-- RSVP (jennifer editorial) -->
   <section id="srsvp" class="section-bg">
     <div class="rsvp-card rv">
-      <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
-      <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
-      <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
-      <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#daae00" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#daae00" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#ff0000" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#ff0000" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--tr" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#ff0000" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#ff0000" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--bl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#ff0000" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#ff0000" opacity=".4"/></svg>
+      <svg class="rsvp-corner rsvp-corner--br" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="#ff0000" stroke-width=".9" opacity=".5"/><circle cx="2" cy="2" r="2.5" fill="#ff0000" opacity=".4"/></svg>
 
       <svg class="rsvp-ornament" viewBox="0 0 320 56" fill="none" aria-hidden="true">
-        <g stroke="#daae00" stroke-width=".9" opacity=".7" fill="none">
+        <g stroke="#ff0000" stroke-width=".9" opacity=".7" fill="none">
           <path d="M18 28 Q50 10 82 28 Q106 42 130 28"/>
           <path d="M190 28 Q214 42 238 28 Q270 10 302 28"/>
           <circle cx="160" cy="28" r="5.5"/>
-          <circle cx="160" cy="28" r="2" fill="#daae00" stroke="none"/>
+          <circle cx="160" cy="28" r="2" fill="#ff0000" stroke="none"/>
           <path d="M148 28 L154 28" opacity=".5"/>
           <path d="M166 28 L172 28" opacity=".5"/>
           <path d="M154 20 Q160 13 166 20" opacity=".55"/>
@@ -990,8 +916,8 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:
     </div>
   </div>
   <div class="vinyl-icons">
-    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#1a0812" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#1a0812" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    <svg class="vinyl-icon-play" viewBox="0 0 24 24" fill="#1a0000" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    <svg class="vinyl-icon-pause" viewBox="0 0 24 24" fill="#1a0000" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
   </div>
 </button>
 
@@ -1265,7 +1191,7 @@ function initCrossfade(){
   btnConf.addEventListener('click', function(){
     if(frozen) return;
     if(!rsvpChoice){
-      feedEl.style.color = '#e0913a';
+      feedEl.style.color = '#ff5a5a';
       feedEl.textContent = 'Por favor selecciona si asistirás o no.';
       return;
     }
@@ -1277,7 +1203,7 @@ function initCrossfade(){
         if(v) nombres.push(v);
       }
       if(nombres.length === 0){
-        feedEl.style.color = '#e0913a';
+        feedEl.style.color = '#ff5a5a';
         feedEl.textContent = 'Por favor escribe al menos un nombre.';
         return;
       }
@@ -1308,7 +1234,7 @@ function initCrossfade(){
     .catch(function(){
       btnText.textContent = 'Confirmar asistencia';
       btnConf.disabled = false;
-      feedEl.style.color = '#e0913a';
+      feedEl.style.color = '#ff5a5a';
       feedEl.textContent = 'Error de conexión. Intenta de nuevo.';
     });
   });
