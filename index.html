@@ -492,19 +492,26 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   font-size:15px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);
 }
 .valet-note svg{width:26px;height:26px;flex-shrink:0}
-.dc-figures{display:flex;align-items:flex-end;justify-content:center;gap:0;max-width:420px;margin:0 auto 26px}
-.dc-fig{flex:1;display:flex;flex-direction:column;align-items:center;padding:6px 12px 10px}
+/* card beige: las figuras son oscuras y sobre negro se veian fantasmales */
+.dc-figures{
+  display:flex;align-items:flex-end;justify-content:center;gap:0;
+  max-width:420px;margin:0 auto 26px;padding:22px 10px 16px;
+  background:linear-gradient(160deg,#f3ebdc 0%,#e7dac3 55%,#dccbb0 100%);
+  border:1px solid rgba(201,160,68,.55);border-radius:16px;
+  box-shadow:0 14px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.6);
+}
+.dc-fig{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 8px}
 .dc-fig img{
   height:clamp(150px,32vw,196px);width:auto;display:block;
-  filter:drop-shadow(0 10px 26px rgba(0,0,0,.55));
+  filter:drop-shadow(0 8px 16px rgba(90,70,45,.32));
 }
 .dc-divider{
-  width:1px;flex-shrink:0;align-self:stretch;margin:18px 0;
-  background:linear-gradient(to bottom,transparent,rgba(201,160,68,.55) 18%,rgba(201,160,68,.55) 82%,transparent);
+  width:1px;flex-shrink:0;align-self:stretch;margin:10px 0;
+  background:linear-gradient(to bottom,transparent,rgba(140,110,66,.45) 18%,rgba(140,110,66,.45) 82%,transparent);
 }
 .dc-fig-name{
   font-family:'Cormorant Garamond',serif;font-style:italic;
-  font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-top:14px;text-indent:3px;
+  font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#4a3524;margin-top:14px;text-indent:3px;
 }
 </style>
 </head>
@@ -948,13 +955,19 @@ gsap.registerPlugin(ScrollTrigger);
     prepareInvitation();
     gsap.to(envFlash,{opacity:0,duration:1.2,ease:'power2.out',onComplete:function(){envFlash.style.display='none'}});
   }
+  /* el video se detiene en el segundo 4 y de ahi se funde hacia la invitacion */
+  var STOP=4;
+  function cerrarSobre(){
+    if(flashStarted)return;
+    flashStarted=true;
+    envVideo.pause();
+    gsap.to(envFlash,{opacity:1,duration:1.2,ease:'power2.inOut',onComplete:revealInvitation});
+  }
   envVideo.addEventListener('timeupdate',function(){
-    if(!flashStarted&&envVideo.duration&&envVideo.currentTime>=envVideo.duration-2){
-      flashStarted=true;
-      gsap.to(envFlash,{opacity:1,duration:1,ease:'power2.in',onComplete:revealInvitation});
-    }
+    if(envVideo.currentTime>=STOP)cerrarSobre();
   });
-  envVideo.addEventListener('ended',function(){gsap.set(envFlash,{opacity:1});revealInvitation()});
+  /* red de seguridad: si 'timeupdate' no alcanza a disparar antes del final */
+  envVideo.addEventListener('ended',cerrarSobre);
   function openEnvelope(){
     if(opened)return;opened=true;
     /* el toque que abre el sobre es el gesto que autoriza el audio */
