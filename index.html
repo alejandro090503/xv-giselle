@@ -483,6 +483,17 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
 /* ── AÑADIDOS DE ESTA INVITACION (paleta de la plantilla) ── */
 .dc-avoid .avoid-dot.is-ok::after{display:none}
+/* el "pm" acompaña a la hora sin competir con ella; en em para que sirva
+   igual en la tarjeta de ubicación (52px) que en el itinerario (36px) */
+.ampm{
+  font-size:.40em;letter-spacing:.16em;margin-left:.16em;vertical-align:.36em;
+  text-transform:lowercase;opacity:.72;
+}
+/* el conjunto al que pertenece el salón, en voz baja bajo el nombre */
+.lt-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;letter-spacing:2px;color:var(--gold);opacity:.9;margin-top:2px;
+}
 .valet-note{
   display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
   max-width:340px;margin:2px auto 0;padding:14px 18px;
@@ -638,7 +649,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   <section id="subic" class="section-bg">
     <h2 class="sec-title rv">Ubicaci&oacute;n</h2>
     <div class="loc-card rv" id="lc1">
-      <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">17:00</div>
+      <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">5:00<span class="ampm">pm</span></div>
       <div class="ls">Misa de XV A&ntilde;os</div>
       <div class="lt" style="font-size:30px;line-height:1.25">Catedral de Nuestra<br>Se&ntilde;ora de Guadalupe</div>
       <p style="margin-top:12px">C. Jos&eacute; Mar&iacute;a Morelos 192, Primera</p>
@@ -646,9 +657,10 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       <a class="btn" href="https://maps.app.goo.gl/G8sam35y5hKmoJG59" target="_blank" rel="noopener">C&oacute;mo llegar</a>
     </div>
     <div class="loc-card rv" id="lc2">
-      <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">19:00</div>
+      <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">7:00<span class="ampm">pm</span></div>
       <div class="ls">Recepci&oacute;n</div>
-      <div class="lt">Salón Marquis</div>
+      <div class="lt">Sal&oacute;n Marquis</div>
+      <div class="lt-sub">en Salones Palladium</div>
       <p style="margin-top:12px">Blvd. L&aacute;zaro C&aacute;rdenas 1085, Las Flores</p>
       <p>21330 Mexicali, B.C.</p>
       <a class="btn" href="https://maps.app.goo.gl/8pGzwjazEzK1Lfrf6" target="_blank" rel="noopener">C&oacute;mo llegar</a>
@@ -691,34 +703,34 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       <div class="itv3-glow" id="itvGlow"></div>
       <div class="itv3-item rv">
         <div class="itv3-gem"></div>
-        <div class="itv3-time">17:00</div>
+        <div class="itv3-time">5:00<span class="ampm">pm</span></div>
         <div class="itv3-ev">Misa de XV A&ntilde;os</div>
         <div class="itv3-sub">Catedral</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
-        <div class="itv3-time">19:00</div>
+        <div class="itv3-time">7:00<span class="ampm">pm</span></div>
         <div class="itv3-ev">Recepci&oacute;n</div>
         <div class="itv3-sub">Salón Marquis</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-dim"></div>
-        <div class="itv3-time">19:40</div>
+        <div class="itv3-time">7:40<span class="ampm">pm</span></div>
         <div class="itv3-ev">Vals</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
-        <div class="itv3-time">20:00</div>
+        <div class="itv3-time">8:00<span class="ampm">pm</span></div>
         <div class="itv3-ev">Cena</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-dim"></div>
-        <div class="itv3-time">21:00</div>
+        <div class="itv3-time">9:00<span class="ampm">pm</span></div>
         <div class="itv3-ev">Baile y Celebraci&oacute;n</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
-        <div class="itv3-time">01:00</div>
+        <div class="itv3-time">1:00<span class="ampm">am</span></div>
         <div class="itv3-ev">Fin de la Fiesta</div>
       </div>
     </div>
@@ -1091,8 +1103,8 @@ function initCrossfade(){
 /* ── GOOGLE CALENDAR ── */
 (function(){
   var t=encodeURIComponent('XV Años de Giselle Alessandra Guerrero');
-  var d=encodeURIComponent('Celebración de XV Años: misa 17:00 hrs en la Catedral de Nuestra Señora de Guadalupe — recepción 19:00 hrs en Salón Marquis, Mexicali, B.C.');
-  var l=encodeURIComponent('Salón Marquis, Blvd. Lázaro Cárdenas 1085, Las Flores, 21330 Mexicali, B.C., México');
+  var d=encodeURIComponent('Celebración de XV Años: misa 5:00 pm en la Catedral de Nuestra Señora de Guadalupe — recepción 7:00 pm en Salón Marquis, Mexicali, B.C.');
+  var l=encodeURIComponent('Salón Marquis, Salones Palladium, Blvd. Lázaro Cárdenas 1085, Las Flores, 21330 Mexicali, B.C., México');
   document.getElementById('gcalBtn').href=
     'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+t+'&dates=20260920T000000Z/20260920T080000Z&details='+d+'&location='+l;
 })();
