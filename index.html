@@ -489,6 +489,31 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   font-size:.40em;letter-spacing:.16em;margin-left:.16em;vertical-align:.36em;
   text-transform:lowercase;opacity:.72;
 }
+/* ── REGALOS: texto del cliente y las dos opciones ── */
+.gift-lead{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;
+  color:#fff;text-align:center;line-height:1.6;margin-bottom:10px;
+}
+.gift-intro{
+  font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(255,255,255,.85);
+  text-align:center;line-height:1.7;max-width:330px;margin:0 auto;
+}
+/* el corazon va inline para que el titulo pueda partirse en dos lineas */
+.gift-opt-ttl{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);
+  text-align:center;line-height:1.7;margin-bottom:18px;
+}
+.gift-opt-ttl svg{width:12px;height:12px;margin-right:8px;vertical-align:-1px}
+.gift-close{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;
+  color:rgba(255,255,255,.85);text-align:center;line-height:1.7;
+  max-width:330px;margin:30px auto 0;
+}
+.gift-pend{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;
+  letter-spacing:1px;color:rgba(255,255,255,.72);margin-top:6px;
+}
 /* el conjunto al que pertenece el salón, en voz baja bajo el nombre */
 .lt-sub{
   font-family:'Cormorant Garamond',serif;font-style:italic;
@@ -802,9 +827,20 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- LLUVIA DE SOBRES (azucena style) -->
   <section id="sgifts" class="section-bg">
-    <p class="eyebrow rv">Celebra con Nosotros</p>
-    <h2 class="sec-title rv">Lluvia de Sobres</h2>
+    <p class="eyebrow rv">Con Cari&ntilde;o</p>
+    <h2 class="sec-title rv">Un Detalle para Giselle</h2>
+    <p class="gift-lead rv">Tu presencia es nuestro mejor regalo.</p>
+    <p class="gift-intro rv">
+      Para quienes deseen obsequiarle un detalle especial a Giselle,
+      hemos dispuesto dos opciones:
+    </p>
+
     <div class="gift-card-lluvia rv">
+      <div class="gift-opt-ttl">
+        <svg viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>Lluvia de Sobres
+      </div>
       <div class="lluvia-icon">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
           <rect x="6" y="16" width="52" height="36" rx="6" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.8"/>
@@ -835,6 +871,32 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
         </p>
       </div>
     </div>
+
+    <div class="gift-card-lluvia rv">
+      <div class="gift-opt-ttl">
+        <svg viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>Mesa de Regalos en Amazon
+      </div>
+      <div class="lluvia-icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
+          <rect x="7" y="24" width="50" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.8"/>
+          <rect x="4" y="16" width="56" height="10" rx="3" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.8"/>
+          <path d="M32 16 L32 56" stroke="#ff0000" stroke-width="1.6"/>
+          <path d="M32 16 C32 16 26 4 20 8 C15 11 22 16 32 16 Z" stroke="#ff0000" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          <path d="M32 16 C32 16 38 4 44 8 C49 11 42 16 32 16 Z" stroke="#ff0000" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px">
+        Elige tu detalle desde la mesa de regalos
+      </p>
+      <p class="gift-pend">El enlace se compartir&aacute; muy pronto</p>
+    </div>
+
+    <p class="gift-close rv">
+      Su cari&ntilde;o y compa&ntilde;&iacute;a har&aacute;n de este d&iacute;a
+      un recuerdo inolvidable para Giselle.
+    </p>
   </section>
 
   <div class="orn rv">
