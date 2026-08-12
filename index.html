@@ -370,7 +370,7 @@ section{padding:64px 26px}
 .btn-wa:hover::after{opacity:1}
 
 /* ── CROSSFADE GALERIA ── */
-#sgal{padding:0;height:420vh}
+#sgal{padding:0;height:700vh}
 .cf-frame{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden}
 .cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity}
 .cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
@@ -807,11 +807,19 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   <section id="sgal">
     <div class="cf-frame">
       <img class="cf-img" id="cfImg1" src="./foto-giselle-bebe.jpg" alt="Giselle de ni&ntilde;a">
-      <img class="cf-img" id="cfImg2" src="./foto-giselle-1.jpg" alt="Giselle">
-      <img class="cf-img" id="cfImg3" src="./foto-giselle-2.jpg" alt="Giselle">
-      <img class="cf-img" id="cfImg4" src="./foto-giselle-3.jpg" alt="Giselle">
-      <img class="cf-img" id="cfImg5" src="./foto-giselle-4.jpg" alt="Giselle">
-      <img class="cf-img" id="cfImg6" src="./foto-giselle.jpg" alt="Giselle">
+      <img class="cf-img" id="cfImg2" src="./foto-giselle-1.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg3" src="./foto-giselle-2.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg4" src="./foto-giselle-3.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg5" src="./foto-giselle-4.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg6" src="./foto-giselle-5.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg7" src="./foto-giselle-6.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg8" src="./foto-giselle-7.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg9" src="./foto-giselle-8.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg10" src="./foto-giselle-9.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg11" src="./foto-giselle-10.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg12" src="./foto-giselle-11.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg13" src="./foto-giselle-12.jpg" alt="Giselle" loading="lazy">
+      <img class="cf-img" id="cfImg14" src="./foto-giselle-13.jpg" alt="Giselle" loading="lazy">
       <div class="cf-fade-top"></div>
       <div class="cf-fade-bot"></div>
     </div>
@@ -1140,9 +1148,18 @@ function initItinerary(){
 }
 
 function initCrossfade(){
-  gsap.set('#cfImg2,#cfImg3,#cfImg4,#cfImg5,#cfImg6',{opacity:0});
-  var breaks=[0.10,0.26,0.42,0.58,0.74];
-  var T=0.13;
+  /* Los cortes se calculan a partir de cuantas fotos haya, en vez de estar
+     escritos a mano: asi agregar o quitar una foto es tocar solo el HTML. */
+  var imgs=gsap.utils.toArray('#sgal .cf-img');
+  var n=imgs.length;
+  if(!n)return;
+  gsap.set(imgs.slice(1),{opacity:0});
+  /* 'head' y 'tail' son los tramos en que la primera y la ultima foto se
+     quedan quietas; lo de en medio se reparte entre las n-1 transiciones */
+  var head=0.05,tail=0.07;
+  var paso=(1-head-tail)/Math.max(n-1,1);
+  var T=paso*0.65;              /* la transicion ocupa 2/3 del tramo; el resto
+                                   es la pausa en que la foto se ve entera */
   var cl=gsap.utils.clamp;
   ScrollTrigger.create({
     trigger:'#sgal',
@@ -1151,13 +1168,12 @@ function initCrossfade(){
     scrub:1,
     onUpdate:function(self){
       var p=self.progress;
-      var f=function(s){return cl(0,1,(p-s)/T)};
-      gsap.set('#cfImg1',{opacity:1-f(breaks[0])});
-      gsap.set('#cfImg2',{opacity:Math.min(f(breaks[0]),1-f(breaks[1]))});
-      gsap.set('#cfImg3',{opacity:Math.min(f(breaks[1]),1-f(breaks[2]))});
-      gsap.set('#cfImg4',{opacity:Math.min(f(breaks[2]),1-f(breaks[3]))});
-      gsap.set('#cfImg5',{opacity:Math.min(f(breaks[3]),1-f(breaks[4]))});
-      gsap.set('#cfImg6',{opacity:f(breaks[4])});
+      var f=function(i){return cl(0,1,(p-(head+i*paso))/T)};
+      for(var i=0;i<n;i++){
+        var entra=i===0?1:f(i-1);
+        var sale=i===n-1?0:f(i);
+        gsap.set(imgs[i],{opacity:Math.min(entra,1-sale)});
+      }
     }
   });
 }
