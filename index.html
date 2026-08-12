@@ -1174,10 +1174,8 @@ gsap.registerPlugin(ScrollTrigger);
   }
   /* ── APERTURA: sobre → texto → invitacion, en una sola linea de tiempo ──
      Son dos disolvencias del mismo largo y la misma curva, encadenadas y
-     solapadas: nunca hay un corte ni una pausa en negro. El sobre empieza a
-     irse ANTES de que el video acabe, asi no se ve el fotograma congelado. */
-  var CORTE=4;        /* segundo en que termina la apertura del sobre */
-  var SOLAPE=.6;      /* cuanto antes del final arranca la disolvencia */
+     solapadas: nunca hay un corte ni una pausa en negro. El video corre
+     completo y la primera disolvencia arranca justo cuando termina. */
   var CRUCE=1.5;      /* lo que dura cada disolvencia; igual en las dos */
   var CINE=7;         /* el texto, de aparecer del todo a desaparecer */
 
@@ -1207,8 +1205,10 @@ gsap.registerPlugin(ScrollTrigger);
       .to(cine,{opacity:0,duration:CRUCE,ease:'none',
         onComplete:function(){cine.style.display='none'}},salida);
   }
+  /* el video corre entero; la disolvencia arranca cuando termina */
   envVideo.addEventListener('timeupdate',function(){
-    if(envVideo.currentTime>=CORTE-SOLAPE)cerrarSobre();
+    var d=envVideo.duration;
+    if(d&&envVideo.currentTime>=d-.05)cerrarSobre();
   });
   /* red de seguridad: si 'timeupdate' no alcanza a disparar antes del final */
   envVideo.addEventListener('ended',cerrarSobre);
