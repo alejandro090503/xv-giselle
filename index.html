@@ -370,7 +370,7 @@ section{padding:64px 26px}
 .btn-wa:hover::after{opacity:1}
 
 /* ── CROSSFADE GALERIA ── */
-#sgal{padding:0;height:700vh}
+#sgal{padding:64px 20px 72px;text-align:center}
 .cf-frame{position:sticky;top:0;width:100%;height:100dvh;overflow:hidden}
 .cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;will-change:opacity}
 .cf-fade-top{position:absolute;top:0;left:0;right:0;height:22%;z-index:2;background:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.6) 50%,transparent 100%);pointer-events:none}
@@ -489,6 +489,37 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   font-size:.40em;letter-spacing:.16em;margin-left:.16em;vertical-align:.36em;
   text-transform:lowercase;opacity:.72;
 }
+/* ── GALERIA: rueda 3D (copiada de boda-veronica-y-andres) ──
+   Alli son 6 fotos con radio 210; aqui son 14, asi que el radio sube y la
+   tarjeta baja: para que dos tarjetas contiguas no se encimen hace falta que
+   la cuerda entre ellas, 2*r*sen(180/n), sea mayor que el ancho de tarjeta.
+   Con n=14 y r=350 la cuerda mide 156px, justo por encima de los 150 de ancho. */
+.wheel-scene{
+  position:relative;width:100%;height:430px;margin:34px auto 0;
+  perspective:1300px;transform-style:preserve-3d;overflow:visible;
+}
+.wheel-ring{
+  position:absolute;width:100%;height:100%;
+  transform-style:preserve-3d;cursor:grab;
+}
+.wheel-ring.dragging{cursor:grabbing}
+.wheel-card{
+  position:absolute;width:150px;height:215px;left:50%;top:50%;
+  margin-left:-75px;margin-top:-107px;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(255,0,0,.30);
+  box-shadow:0 12px 40px rgba(0,0,0,.65);
+  user-select:none;-webkit-user-select:none;
+}
+.wheel-card img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;pointer-events:none;
+}
+.gal-hint{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);text-align:center;margin-top:26px;opacity:.85;
+}
+
 /* ── REGALOS: texto del cliente y las dos opciones ── */
 .gift-lead{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;
@@ -791,7 +822,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       Color sugerido <span class="avoid-dot is-ok" style="background:#0e0200;border-color:rgba(255,255,255,.55)"></span> Negro
     </div>
     <div class="dc-avoid">
-      Evitar <span class="avoid-dot" style="background:#671200;"></span> Rojo &oacute;xido
+      Evitar <span class="avoid-dot" style="background:#6E0D25;"></span> Guinda
     </div>
   </section>
 
@@ -805,24 +836,25 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- CROSSFADE GALERIA -->
   <section id="sgal">
-    <div class="cf-frame">
-      <img class="cf-img" id="cfImg1" src="./foto-giselle-bebe.jpg" alt="Giselle de ni&ntilde;a">
-      <img class="cf-img" id="cfImg2" src="./foto-giselle-1.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg3" src="./foto-giselle-2.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg4" src="./foto-giselle-3.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg5" src="./foto-giselle-4.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg6" src="./foto-giselle-5.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg7" src="./foto-giselle-6.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg8" src="./foto-giselle-7.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg9" src="./foto-giselle-8.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg10" src="./foto-giselle-9.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg11" src="./foto-giselle-10.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg12" src="./foto-giselle-11.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg13" src="./foto-giselle-12.jpg" alt="Giselle" loading="lazy">
-      <img class="cf-img" id="cfImg14" src="./foto-giselle-13.jpg" alt="Giselle" loading="lazy">
-      <div class="cf-fade-top"></div>
-      <div class="cf-fade-bot"></div>
+    <div class="wheel-scene rv" id="wheel-scene">
+      <div class="wheel-ring" id="wheel-ring">
+        <div class="wheel-card"><img src="./foto-giselle-bebe.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-1.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-2.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-3.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-4.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-5.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-6.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-7.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-8.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-9.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-10.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-11.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-12.jpg" alt="Giselle"></div>
+        <div class="wheel-card"><img src="./foto-giselle-13.jpg" alt="Giselle"></div>
+      </div>
     </div>
+    <p class="gal-hint rv">Arrastra para girar</p>
   </section>
 
   <div class="orn rv">
@@ -862,21 +894,6 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       </p>
       <div class="lluvia-info-wrap">
         <button class="lluvia-info-btn" type="button" onclick="openLluviaModal()">&iquest;Qu&eacute; es?</button>
-      </div>
-      <div style="width:50px;height:1px;background:linear-gradient(to right,transparent,rgba(218,174,0,.4),transparent);margin:20px auto"></div>
-      <div style="margin-top:18px">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="52" style="display:block;margin:0 auto 10px">
-          <rect x="10" y="20" width="44" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.4"/>
-          <path d="M16 20 L32 10 L48 20" stroke="#ff0000" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-          <circle cx="32" cy="36" r="7" stroke="#ff0000" stroke-width="1.2" fill="none" opacity=".6"/>
-          <path d="M32 31 L32 41 M27 36 L37 36" stroke="#ff0000" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
-        </svg>
-        <p style="font-family:'Great Vibes',cursive;font-size:32px;color:#fff;margin-bottom:10px">Zelle</p>
-        <p style="font-family:'Lato',sans-serif;font-weight:700;font-size:22px;letter-spacing:2px;color:var(--gold);margin-bottom:8px">760-604-7734</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;letter-spacing:2px;color:#fff;margin-bottom:12px">Almendra Medina</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:16px;color:rgba(255,255,255,.85);line-height:1.7;max-width:300px;margin:0 auto">
-          Si prefieres enviar tu detalle a la distancia, este es el medio
-        </p>
       </div>
     </div>
 
@@ -1072,7 +1089,7 @@ function launchPage(){
   initScrollReveal();
   initCountdown();
   initItinerary();
-  initCrossfade();
+  initWheel();
   try{startMusic()}catch(e){}
 }
 
@@ -1147,35 +1164,63 @@ function initItinerary(){
   });
 }
 
-function initCrossfade(){
-  /* Los cortes se calculan a partir de cuantas fotos haya, en vez de estar
-     escritos a mano: asi agregar o quitar una foto es tocar solo el HTML. */
-  var imgs=gsap.utils.toArray('#sgal .cf-img');
-  var n=imgs.length;
+function initWheel(){
+  /* Rueda 3D con arrastre e inercia, portada de boda-veronica-y-andres.
+     El radio se calcula segun cuantas fotos haya en vez de estar fijo: la
+     cuerda entre dos tarjetas contiguas, 2*r*sen(180/n), debe superar el ancho
+     de la tarjeta para que no se encimen. */
+  var ring=document.getElementById('wheel-ring');
+  if(!ring)return;
+  var cards=ring.querySelectorAll('.wheel-card');
+  var n=cards.length;
   if(!n)return;
-  gsap.set(imgs.slice(1),{opacity:0});
-  /* 'head' y 'tail' son los tramos en que la primera y la ultima foto se
-     quedan quietas; lo de en medio se reparte entre las n-1 transiciones */
-  var head=0.05,tail=0.07;
-  var paso=(1-head-tail)/Math.max(n-1,1);
-  var T=paso*0.65;              /* la transicion ocupa 2/3 del tramo; el resto
-                                   es la pausa en que la foto se ve entera */
-  var cl=gsap.utils.clamp;
-  ScrollTrigger.create({
-    trigger:'#sgal',
-    start:'top top',
-    end:'bottom bottom',
-    scrub:1,
-    onUpdate:function(self){
-      var p=self.progress;
-      var f=function(i){return cl(0,1,(p-(head+i*paso))/T)};
-      for(var i=0;i<n;i++){
-        var entra=i===0?1:f(i-1);
-        var sale=i===n-1?0:f(i);
-        gsap.set(imgs[i],{opacity:Math.min(entra,1-sale)});
-      }
-    }
+  var ancho=cards[0].offsetWidth||150;
+  var radius=Math.max(210,Math.ceil((ancho+6)/(2*Math.sin(Math.PI/n))));
+  var rot=0,vel=0,isDrag=false,startX=0,startRot=0,lastX=0,rafId=null;
+
+  cards.forEach(function(card,i){
+    card.style.transform='rotateY('+(360/n*i)+'deg) translateZ('+radius+'px)';
   });
+
+  function setRot(){gsap.set(ring,{rotateY:rot})}
+  setRot();
+
+  function inertia(){
+    if(isDrag)return;
+    rot+=vel; vel*=0.94; setRot();
+    if(Math.abs(vel)>0.05)rafId=requestAnimationFrame(inertia);
+  }
+  function pointerDown(x){
+    isDrag=true; ring.classList.add('dragging');
+    startX=x; lastX=x; startRot=rot; vel=0;
+    if(rafId)cancelAnimationFrame(rafId);
+  }
+  function pointerMove(x){
+    if(!isDrag)return;
+    rot=startRot+(x-startX)*0.45;
+    vel=(x-lastX)*0.5; lastX=x; setRot();
+  }
+  function pointerUp(){
+    if(!isDrag)return;
+    isDrag=false; ring.classList.remove('dragging');
+    rafId=requestAnimationFrame(inertia);
+  }
+
+  ring.addEventListener('mousedown',function(e){e.preventDefault();pointerDown(e.clientX)});
+  window.addEventListener('mousemove',function(e){pointerMove(e.clientX)});
+  window.addEventListener('mouseup',pointerUp);
+  ring.addEventListener('touchstart',function(e){pointerDown(e.touches[0].clientX)},{passive:true});
+  ring.addEventListener('touchmove',function(e){pointerMove(e.touches[0].clientX)},{passive:true});
+  ring.addEventListener('touchend',pointerUp);
+
+  /* gira sola hasta que alguien la toca por primera vez */
+  var auto=true;
+  (function spin(){
+    if(auto&&!isDrag){rot+=0.12;setRot()}
+    requestAnimationFrame(spin);
+  })();
+  ring.addEventListener('mousedown',function(){auto=false});
+  ring.addEventListener('touchstart',function(){auto=false});
 }
 
 /* ── GOOGLE CALENDAR ── */
