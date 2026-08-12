@@ -489,6 +489,28 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   font-size:.40em;letter-spacing:.16em;margin-left:.16em;vertical-align:.36em;
   text-transform:lowercase;opacity:.72;
 }
+/* ── CINEMATICA: el texto que va entre el sobre y la invitacion ── */
+#cine{
+  position:fixed;inset:0;z-index:10000;display:none;
+  align-items:center;justify-content:center;
+  background:#000;opacity:0;pointer-events:none;
+  padding:36px 30px;
+}
+.cine-in{max-width:340px;text-align:center}
+.cine-l{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:19px;line-height:1.75;color:#fff;
+}
+.cine-p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;line-height:1.8;color:rgba(255,255,255,.88);
+  margin:24px auto;
+}
+.cine-orn{margin:0 auto}
+.cine-orn svg{width:120px;height:26px;display:block;margin:0 auto}
+.cine-orn.abajo{margin-top:26px}
+.cine-orn.arriba{margin-bottom:26px}
+
 /* segundo nombre en el hero: en em, para que siga a los 130px de .hero-name */
 /* margen amplio: Great Vibes tiene descendentes largas y la cola de la "G"
    de Giselle se montaba sobre la "A" de Alessandra */
@@ -641,6 +663,33 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   <p class="envelope-hint" id="env-hint">Toca para abrir</p>
 </div>
 <div id="env-flash"></div>
+
+<!-- CINEMATICA: se muestra tras el video del sobre y antes de la invitacion -->
+<div id="cine" aria-hidden="true">
+  <div class="cine-in">
+    <div class="cine-orn arriba">
+      <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+        <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+        <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      </svg>
+    </div>
+    <p class="cine-l">Hay noches que se convierten en recuerdos,<br>y recuerdos que duran para siempre.</p>
+    <p class="cine-p">
+      Esta noche, Giselle celebra sus XV a&ntilde;os rodeada de quienes forman parte
+      de su historia, mientras comienza una nueva etapa llena de sue&ntilde;os,
+      m&uacute;sica y aventuras.
+    </p>
+    <p class="cine-l">Celebramos a la ni&ntilde;a que fue,<br>a la joven en la que se est&aacute; convirtiendo,<br>y los recuerdos que a&uacute;n est&aacute;n por escribir.</p>
+    <div class="cine-orn abajo">
+      <svg viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+        <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+        <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      </svg>
+    </div>
+  </div>
+</div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -1128,13 +1177,31 @@ gsap.registerPlugin(ScrollTrigger);
     prepareInvitation();
     gsap.to(envFlash,{opacity:0,duration:1.2,ease:'power2.out',onComplete:function(){envFlash.style.display='none'}});
   }
+  /* Cinematica: sobre el negro que dejo el sobre, entra el texto escalonado,
+     se sostiene y se va. Al terminar se descubre la invitacion. */
+  function cinematica(despues){
+    var cine=document.getElementById('cine');
+    if(!cine||!window.gsap){despues();return;}
+    var DUR=7;                        /* segundos que dura completa */
+    var SALIDA=1.1;                   /* lo que tarda en desvanecerse */
+    var partes=cine.querySelectorAll('.cine-orn,.cine-l,.cine-p');
+    var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    cine.style.display='flex';
+    gsap.timeline({onComplete:function(){cine.style.display='none';despues()}})
+      .set(cine,{opacity:1})
+      .fromTo(partes,{opacity:0,y:16},
+        {opacity:1,y:0,duration:quieto?.01:1.1,stagger:quieto?0:.28,ease:'power2.out'})
+      .to(cine,{opacity:0,duration:SALIDA,ease:'power2.inOut'},DUR-SALIDA);
+  }
   /* el video se detiene en el segundo 4 y de ahi se funde hacia la invitacion */
   var STOP=4;
   function cerrarSobre(){
     if(flashStarted)return;
     flashStarted=true;
     envVideo.pause();
-    gsap.to(envFlash,{opacity:1,duration:1.2,ease:'power2.inOut',onComplete:revealInvitation});
+    gsap.to(envFlash,{opacity:1,duration:1.2,ease:'power2.inOut',onComplete:function(){
+      cinematica(revealInvitation);
+    }});
   }
   envVideo.addEventListener('timeupdate',function(){
     if(envVideo.currentTime>=STOP)cerrarSobre();
@@ -1149,7 +1216,8 @@ gsap.registerPlugin(ScrollTrigger);
     var p=envVideo.play();
     gsap.to(envImage,{opacity:0,duration:.55,ease:'power2.inOut',onComplete:function(){envImage.style.display='none'}});
     gsap.to(envVideo,{opacity:1,duration:.55,ease:'power2.inOut'});
-    if(p!==undefined)p.catch(function(){revealInvitation()});
+    /* si el video no arranca, se pasa igual por la cinematica */
+    if(p!==undefined)p.catch(function(){cerrarSobre()});
   }
   envScreen.addEventListener('click',openEnvelope);
   envScreen.addEventListener('touchstart',function(e){e.preventDefault();openEnvelope()},{passive:false});
