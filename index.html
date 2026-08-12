@@ -489,6 +489,56 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   font-size:.40em;letter-spacing:.16em;margin-left:.16em;vertical-align:.36em;
   text-transform:lowercase;opacity:.72;
 }
+/* segundo nombre en el hero: en em, para que siga a los 130px de .hero-name */
+/* margen amplio: Great Vibes tiene descendentes largas y la cola de la "G"
+   de Giselle se montaba sobre la "A" de Alessandra */
+.hero-name2{display:block;font-size:.56em;line-height:1;margin-top:16px;opacity:.95}
+
+/* ── CAJA DE REGALO QUE SE ABRE CON CONFETI (de boda-ligia-y-guillermo) ── */
+.gbx{position:relative;text-align:center;margin-top:4px}
+.gbx-present{
+  width:150px;height:150px;margin:0 auto;display:block;padding:0;border:none;
+  background:none;cursor:pointer;position:relative;-webkit-tap-highlight-color:transparent;
+}
+.gbx-present svg{width:100%;height:100%;display:block;transform-origin:50% 100%}
+.gbx-lid{transform-origin:50% 100%;transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.gbx-present.shake{animation:gbxShake .5s ease-in-out}
+@keyframes gbxShake{
+  0%,100%{transform:rotate(0)}15%{transform:rotate(-5deg)}30%{transform:rotate(4deg)}
+  45%{transform:rotate(-3deg)}60%{transform:rotate(2deg)}75%{transform:rotate(-1deg)}
+}
+.gbx.opened .gbx-present{animation:gbxTopple .7s cubic-bezier(.6,-.2,.7,1) forwards;pointer-events:none}
+@keyframes gbxTopple{
+  0%{transform:scale(1);opacity:1}40%{transform:scale(1.06)}
+  100%{transform:scale(.86) translateY(-12px);opacity:0}
+}
+.gbx.opened .gbx-lid{transform:translateY(-30px) rotate(-18deg)}
+.gbx-tap{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;letter-spacing:1px;
+  color:var(--gold);opacity:.9;margin-top:10px;overflow:hidden;
+  transition:opacity .3s,max-height .3s;
+}
+.gbx.opened .gbx-tap{opacity:0;max-height:0;margin:0}
+.gbx-confetti{position:absolute;top:38%;left:50%;width:0;height:0;pointer-events:none;z-index:10}
+.gbx-confetti-piece{position:absolute;opacity:0}
+.gift-links{margin-top:14px}
+.gf-card{
+  display:block;text-decoration:none;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,0,0,.22);border-radius:12px;padding:20px 18px;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),border-color .25s;
+}
+.gf-card:active{transform:scale(.98);border-color:var(--accent)}
+/* el logo va sobre su blanco oficial: es un SVG real de la marca */
+.gf-brand{
+  display:flex;align-items:center;justify-content:center;height:46px;
+  border-radius:10px;margin:0 auto 14px;max-width:200px;background:#FFFFFF;padding:9px 16px;
+}
+.gf-brand img{height:26px;width:auto;display:block}
+.gf-nt{
+  display:block;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;letter-spacing:1px;color:#fff;
+}
+
 /* ── GALERIA: rueda 3D (copiada de boda-veronica-y-andres) ──
    Alli son 6 fotos con radio 210; aqui son 14, asi que el radio sube y la
    tarjeta baja: para que dos tarjetas contiguas no se encimen hace falta que
@@ -605,7 +655,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
     <div class="hero-bg"></div>
     <div class="hero-veil"></div>
     <div class="hero-bottom">
-      <h1 class="hero-name" id="hNm">Giselle</h1>
+      <h1 class="hero-name" id="hNm">Giselle<span class="hero-name2">Alessandra</span></h1>
       <div class="hero-sub" id="hSb">
         <span class="xv-num">XV</span>
         <span class="xv-anos">A&ntilde;os</span>
@@ -903,19 +953,43 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>Mesa de Regalos en Amazon
       </div>
-      <div class="lluvia-icon">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
-          <rect x="7" y="24" width="50" height="32" rx="4" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.8"/>
-          <rect x="4" y="16" width="56" height="10" rx="3" fill="rgba(255,255,255,.08)" stroke="#ff0000" stroke-width="1.8"/>
-          <path d="M32 16 L32 56" stroke="#ff0000" stroke-width="1.6"/>
-          <path d="M32 16 C32 16 26 4 20 8 C15 11 22 16 32 16 Z" stroke="#ff0000" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-          <path d="M32 16 C32 16 38 4 44 8 C49 11 42 16 32 16 Z" stroke="#ff0000" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-        </svg>
+      <div class="gbx" id="giftBox">
+        <button type="button" class="gbx-present" id="giftBtn"
+                aria-label="Abrir la mesa de regalos" aria-expanded="false" aria-controls="giftLinks">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="gbxBody" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#c40000"/><stop offset="100%" stop-color="#4a0000"/>
+              </linearGradient>
+              <linearGradient id="gbxTop" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ec1c1c"/><stop offset="100%" stop-color="#6b0000"/>
+              </linearGradient>
+              <linearGradient id="gbxRib" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F0DCA0"/><stop offset="100%" stop-color="#C9A044"/>
+              </linearGradient>
+            </defs>
+            <rect x="22" y="52" width="76" height="54" rx="6" fill="url(#gbxBody)"/>
+            <rect x="54" y="52" width="12" height="54" fill="url(#gbxRib)" opacity=".9"/>
+            <g class="gbx-lid">
+              <rect x="16" y="40" width="88" height="17" rx="5" fill="url(#gbxTop)"/>
+              <rect x="54" y="40" width="12" height="17" fill="url(#gbxRib)" opacity=".9"/>
+              <path d="M60 41 C48 22 30 26 39 41 Z" fill="url(#gbxRib)"/>
+              <path d="M60 41 C72 22 90 26 81 41 Z" fill="url(#gbxRib)"/>
+              <circle cx="60" cy="40" r="6" fill="url(#gbxRib)"/>
+            </g>
+          </svg>
+        </button>
+        <div class="gbx-confetti" id="giftConfetti" aria-hidden="true"></div>
+        <p class="gbx-tap">Toca el regalo</p>
       </div>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px">
-        Elige tu detalle desde la mesa de regalos
-      </p>
-      <p class="gift-pend">El enlace se compartir&aacute; muy pronto</p>
+
+      <div class="gift-links" id="giftLinks" hidden>
+        <a href="https://www.amazon.com/hz/wishlist/ls/25KNLJLXR7KQ6?ref_=wl_share"
+           class="gf-card" target="_blank" rel="noopener">
+          <span class="gf-brand"><img src="./amazon.svg" alt="Amazon" width="603" height="182" loading="lazy"></span>
+          <span class="gf-nt">Ver la lista de Giselle &rarr;</span>
+        </a>
+      </div>
     </div>
 
     <p class="gift-close rv">
@@ -1222,6 +1296,57 @@ function initWheel(){
   ring.addEventListener('mousedown',function(){auto=false});
   ring.addEventListener('touchstart',function(){auto=false});
 }
+
+/* ── MESA DE REGALOS: la caja se abre con confeti y revela la lista ── */
+(function(){
+  var box=document.getElementById('giftBox'),
+      btn=document.getElementById('giftBtn'),
+      conf=document.getElementById('giftConfetti'),
+      links=document.getElementById('giftLinks');
+  if(!box||!btn||!links)return;
+
+  function abrir(){
+    if(box.classList.contains('opened'))return;
+    btn.classList.add('shake');
+    btn.setAttribute('aria-expanded','true');
+
+    setTimeout(function(){
+      box.classList.add('opened');
+
+      /* confeti en la paleta de la invitacion: rojo, dorado y blanco */
+      var colores=['#ff0000','#C9A044','#F0DCA0','#ffffff','#8a0000','#e8e0cd'];
+      var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!quieto&&window.gsap){
+        for(var i=0;i<34;i++){
+          var p=document.createElement('div');
+          p.className='gbx-confetti-piece';
+          p.style.background=colores[i%colores.length];
+          var sz=5+Math.random()*7;
+          p.style.width=sz+'px';p.style.height=sz+'px';
+          p.style.borderRadius=Math.random()>.5?'50%':'2px';
+          conf.appendChild(p);
+          var ang=Math.random()*Math.PI*2, d=55+Math.random()*105;
+          gsap.fromTo(p,{opacity:1,x:0,y:0,scale:1,rotation:0},
+            {x:Math.cos(ang)*d, y:Math.sin(ang)*d-46, opacity:0, scale:.2,
+             rotation:Math.random()*720-360, duration:.9+Math.random()*.5,
+             ease:'power2.out', delay:Math.random()*.12,
+             onComplete:function(){var t=this.targets()[0];if(t&&t.remove)t.remove()}});
+        }
+      }
+
+      links.hidden=false;
+      if(window.gsap){
+        gsap.fromTo(links.children,{opacity:0,y:22},
+          {opacity:1,y:0,duration:.7,stagger:.12,ease:'power2.out',delay:.15});
+      }
+      if(window.ScrollTrigger)ScrollTrigger.refresh();
+    },480);
+
+    setTimeout(function(){btn.style.display='none'},1200);
+  }
+
+  btn.addEventListener('click',abrir);
+})();
 
 /* ── GOOGLE CALENDAR ── */
 (function(){
