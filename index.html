@@ -491,7 +491,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 }
 /* ── CINEMATICA: el texto que va entre el sobre y la invitacion ── */
 #cine{
-  position:fixed;inset:0;z-index:10000;display:none;
+  position:fixed;inset:0;z-index:10002;display:none;   /* por encima del sobre (10000) */
   align-items:center;justify-content:center;
   background:#000;opacity:0;pointer-events:none;
   padding:36px 30px;
@@ -1160,7 +1160,6 @@ gsap.registerPlugin(ScrollTrigger);
   var envScreen=document.getElementById('envelope-screen'),
       envImage=document.getElementById('env-image'),
       envVideo=document.getElementById('env-video'),
-      envFlash=document.getElementById('env-flash'),
       hint=document.getElementById('env-hint'),
       opened=false;
   gsap.timeline()
@@ -1173,38 +1172,43 @@ gsap.registerPlugin(ScrollTrigger);
     document.querySelector('.wrap').style.visibility='visible';
     launchPage();
   }
-  function revealInvitation(){
-    prepareInvitation();
-    gsap.to(envFlash,{opacity:0,duration:1.2,ease:'power2.out',onComplete:function(){envFlash.style.display='none'}});
-  }
-  /* Cinematica: sobre el negro que dejo el sobre, entra el texto escalonado,
-     se sostiene y se va. Al terminar se descubre la invitacion. */
-  function cinematica(despues){
-    var cine=document.getElementById('cine');
-    if(!cine||!window.gsap){despues();return;}
-    var DUR=7;                        /* segundos que dura completa */
-    var SALIDA=1.1;                   /* lo que tarda en desvanecerse */
-    var partes=cine.querySelectorAll('.cine-orn,.cine-l,.cine-p');
-    var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    cine.style.display='flex';
-    gsap.timeline({onComplete:function(){cine.style.display='none';despues()}})
-      .set(cine,{opacity:1})
-      .fromTo(partes,{opacity:0,y:16},
-        {opacity:1,y:0,duration:quieto?.01:1.1,stagger:quieto?0:.28,ease:'power2.out'})
-      .to(cine,{opacity:0,duration:SALIDA,ease:'power2.inOut'},DUR-SALIDA);
-  }
-  /* el video se detiene en el segundo 4 y de ahi se funde hacia la invitacion */
-  var STOP=4;
+  /* ── APERTURA: sobre → texto → invitacion, en una sola linea de tiempo ──
+     Son dos disolvencias del mismo largo y la misma curva, encadenadas y
+     solapadas: nunca hay un corte ni una pausa en negro. El sobre empieza a
+     irse ANTES de que el video acabe, asi no se ve el fotograma congelado. */
+  var CORTE=4;        /* segundo en que termina la apertura del sobre */
+  var SOLAPE=.6;      /* cuanto antes del final arranca la disolvencia */
+  var CRUCE=1.5;      /* lo que dura cada disolvencia; igual en las dos */
+  var CINE=7;         /* el texto, de aparecer del todo a desaparecer */
+
   function cerrarSobre(){
     if(flashStarted)return;
     flashStarted=true;
-    envVideo.pause();
-    gsap.to(envFlash,{opacity:1,duration:1.2,ease:'power2.inOut',onComplete:function(){
-      cinematica(revealInvitation);
-    }});
+    var cine=document.getElementById('cine');
+    if(!cine||!window.gsap){envVideo.pause();prepareInvitation();return;}
+    var partes=cine.querySelectorAll('.cine-orn,.cine-l,.cine-p');
+    var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    cine.style.display='flex';
+    var salida=CRUCE*.5+CINE-CRUCE;   /* cuando el texto empieza a irse */
+
+    /* Las disolvencias van en lineal: con una curva 'inOut' las dos capas se
+       cruzan de golpe en el centro y se nota el salto. Lineal reparte el
+       cambio parejo, que es como se disuelve en cine. */
+    gsap.timeline()
+      /* el sobre se disuelve con el video todavia en marcha */
+      .to(envScreen,{opacity:0,duration:CRUCE,ease:'none',
+        onComplete:function(){envVideo.pause();envScreen.style.display='none'}})
+      /* el texto entra encima, solapado con la salida del sobre */
+      .to(cine,{opacity:1,duration:CRUCE,ease:'none'},CRUCE*.4)
+      .fromTo(partes,{opacity:0,y:16},
+        {opacity:1,y:0,duration:quieto?.01:1.1,stagger:quieto?0:.28,ease:'power2.out'},CRUCE*.6)
+      /* y se va mientras la invitacion aparece detras: se cruzan, no se turnan */
+      .call(prepareInvitation,null,salida)
+      .to(cine,{opacity:0,duration:CRUCE,ease:'none',
+        onComplete:function(){cine.style.display='none'}},salida);
   }
   envVideo.addEventListener('timeupdate',function(){
-    if(envVideo.currentTime>=STOP)cerrarSobre();
+    if(envVideo.currentTime>=CORTE-SOLAPE)cerrarSobre();
   });
   /* red de seguridad: si 'timeupdate' no alcanza a disparar antes del final */
   envVideo.addEventListener('ended',cerrarSobre);
