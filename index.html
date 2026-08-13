@@ -483,6 +483,12 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
 /* ── AÑADIDOS DE ESTA INVITACION (paleta de la plantilla) ── */
 .dc-avoid .avoid-dot.is-ok::after{display:none}
+/* La fecha limite no debe partirse a media fecha. Como .rsvp-deadline es un
+   inline-flex, cada trozo es un item: se marcan como indivisibles y se deja
+   que la fila salte, de modo que si no caben juntos quedan en dos renglones
+   centrados, cada uno entero. */
+.sin-corte{white-space:nowrap}
+.rsvp-deadline{flex-wrap:wrap;justify-content:center}
 /* el "pm" acompaña a la hora sin competir con ella; en em para que sirva
    igual en la tarjeta de ubicación (52px) que en el itinerario (36px) */
 .ampm{
@@ -1059,7 +1065,8 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
       <div class="rsvp-deadline">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-        Confirmar antes del &middot; 31 de agosto de 2026
+        <span class="sin-corte">Confirmar antes del &middot;</span>
+        <span class="sin-corte">31 de agosto de 2026</span>
       </div>
     </div>
   </section>
