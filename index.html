@@ -489,6 +489,35 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
    centrados, cada uno entero. */
 .sin-corte{white-space:nowrap}
 .rsvp-deadline{flex-wrap:wrap;justify-content:center}
+
+/* ── ELECCION DE IDIOMA (por encima del sobre, que esta en z-index 10000) ── */
+#lang-screen{
+  position:fixed;inset:0;z-index:10005;background:#000;
+  display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;
+}
+.lang-in{text-align:center;max-width:320px;width:100%}
+.lang-orn{width:130px;height:30px;display:block;margin:0 auto 22px}
+.lang-gg{
+  font-family:'Great Vibes',cursive;font-size:76px;line-height:1;color:#fff;
+  text-shadow:0 2px 26px rgba(255,0,0,.45);margin-bottom:24px;
+}
+.lang-q{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;
+  letter-spacing:2px;color:#fff;line-height:1.6;margin-bottom:26px;
+}
+.lang-q span{
+  display:block;font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent);opacity:.9;margin-top:6px;font-style:normal;
+}
+.lang-btn{
+  display:block;width:100%;margin:0 auto 12px;padding:15px 28px;
+  background:transparent;border:1.4px solid var(--accent);border-radius:50px;color:#fff;
+  font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;
+  letter-spacing:4px;text-transform:uppercase;cursor:pointer;
+  transition:background .3s ease,transform .2s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.lang-btn:active{transform:scale(.97);background:rgba(255,0,0,.22)}
 /* el "pm" acompaña a la hora sin competir con ella; en em para que sirva
    igual en la tarjeta de ubicación (52px) que en el itinerario (36px) */
 .ampm{
@@ -641,10 +670,25 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 <body>
 
 <!-- ENVELOPE -->
+<!-- ELECCION DE IDIOMA: va antes del sobre -->
+<div id="lang-screen">
+  <div class="lang-in">
+    <svg class="lang-orn" viewBox="0 0 130 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <line x1="8" y1="15" x2="52" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+      <path d="M65 22C65 22 58 16 58 12C58 9.5 59.8 8 62 8C63.5 8 65 9.5 65 9.5S66.5 8 68 8C70.2 8 72 9.5 72 12C72 16 65 22 65 22Z" fill="#ff0000" opacity=".45"/>
+      <line x1="78" y1="15" x2="122" y2="15" stroke="#ff0000" stroke-width=".8" opacity=".3"/>
+    </svg>
+    <div class="lang-gg">GG</div>
+    <p class="lang-q">Elige tu idioma<span>Choose your language</span></p>
+    <button type="button" class="lang-btn" data-lang="es">Espa&ntilde;ol</button>
+    <button type="button" class="lang-btn" data-lang="en">English</button>
+  </div>
+</div>
+
 <div id="envelope-screen" role="button" aria-label="Toca para abrir tu invitacion">
   <img id="env-image" src="./sobre.png" alt="Invitacion Giselle">
   <video id="env-video" src="./sobre-apertura.mp4" playsinline webkit-playsinline muted preload="auto"></video>
-  <p class="envelope-hint" id="env-hint">Toca para abrir</p>
+  <p class="envelope-hint" id="env-hint" data-en="Tap to open">Toca para abrir</p>
 </div>
 <div id="env-flash"></div>
 
@@ -652,7 +696,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 <!-- LOADER -->
 <div id="loader">
   <div class="ld-name" id="ldName"></div>
-  <div class="ld-tag" id="ldTag">Mis XV A&ntilde;os &middot; 19 Septiembre 2026</div>
+  <div class="ld-tag" id="ldTag" data-en="My Quincea&ntilde;era &middot; September 19, 2026">Mis XV A&ntilde;os &middot; 19 Septiembre 2026</div>
 </div>
 
 <div class="wrap" style="visibility:hidden">
@@ -665,7 +709,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       <h1 class="hero-name" id="hNm">Giselle</h1>
       <div class="hero-sub" id="hSb">
         <span class="xv-num">XV</span>
-        <span class="xv-anos">A&ntilde;os</span>
+        <span class="xv-anos" data-en="Years">A&ntilde;os</span>
       </div>
     </div>
   </section>
@@ -683,19 +727,19 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   <div class="fecha-sec rv">
     <div class="fecha-line">
       <div class="fl-bar"></div>
-      <div class="fecha-txt">19 &middot; Septiembre &middot; MMXXVI</div>
+      <div class="fecha-txt" data-en="19 &middot; September &middot; MMXXVI">19 &middot; Septiembre &middot; MMXXVI</div>
       <div class="fl-bar right"></div>
     </div>
   </div>
 
   <!-- COUNTDOWN (jennifer flip style) -->
   <section id="scd" class="section-bg">
-    <h2 class="sec-title rv">Cuenta Regresiva</h2>
+    <h2 class="sec-title rv" data-en="Countdown">Cuenta Regresiva</h2>
     <div class="countdown-grid rv">
-      <div class="cd-block"><div class="cd-num" id="cdD">000</div><div class="cd-lbl">D&iacute;as</div></div>
-      <div class="cd-block"><div class="cd-num" id="cdH">00</div><div class="cd-lbl">Horas</div></div>
-      <div class="cd-block"><div class="cd-num" id="cdM">00</div><div class="cd-lbl">Min</div></div>
-      <div class="cd-block"><div class="cd-num" id="cdS">00</div><div class="cd-lbl">Seg</div></div>
+      <div class="cd-block"><div class="cd-num" id="cdD">000</div><div class="cd-lbl" data-en="Days">D&iacute;as</div></div>
+      <div class="cd-block"><div class="cd-num" id="cdH">00</div><div class="cd-lbl" data-en="Hours">Horas</div></div>
+      <div class="cd-block"><div class="cd-num" id="cdM">00</div><div class="cd-lbl" data-en="Min">Min</div></div>
+      <div class="cd-block"><div class="cd-num" id="cdS">00</div><div class="cd-lbl" data-en="Sec">Seg</div></div>
     </div>
   </section>
 
@@ -709,11 +753,11 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- FAMILIA -->
   <section id="sfam" class="section-bg">
-    <div class="eyebrow rv">En Compa&ntilde;&iacute;a de</div>
-    <h2 class="sec-title rv">Mi Familia</h2>
+    <div class="eyebrow rv" data-en="In the Company of">En Compa&ntilde;&iacute;a de</div>
+    <h2 class="sec-title rv" data-en="My Family">Mi Familia</h2>
     <div class="fam">
       <div class="fam-g rv">
-        <div class="role">Mis Padres</div>
+        <div class="role" data-en="My Parents">Mis Padres</div>
         <div class="names">Almendra Guerrero<br><span class="amp">&amp;</span><br>Gonzalo Guerrero Jr.</div>
       </div>
       <div class="hearts-sep rv">
@@ -728,7 +772,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
         </svg>
       </div>
       <div class="fam-g rv">
-        <div class="role">Mis Padrinos de Honor</div>
+        <div class="role" data-en="Godparents of Honor">Mis Padrinos de Honor</div>
         <div class="names">Lisbeth Lucero <span class="amp">&amp;</span> Jes&uacute;s Vel&aacute;squez</div>
         <div class="names" style="margin-top:8px">M&oacute;nica Velarde <span class="amp">&amp;</span> Manuel Montes</div>
       </div>
@@ -744,7 +788,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
         </svg>
       </div>
       <div class="fam-g rv">
-        <div class="role">Mi Chambel&aacute;n de Honor</div>
+        <div class="role" data-en="My Escort of Honor">Mi Chambel&aacute;n de Honor</div>
         <div class="names">Gonzalo Guerrero III</div>
       </div>
     </div>
@@ -760,25 +804,25 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- UBICACION -->
   <section id="subic" class="section-bg">
-    <h2 class="sec-title rv">Ubicaci&oacute;n</h2>
+    <h2 class="sec-title rv" data-en="Location">Ubicaci&oacute;n</h2>
     <div class="loc-card rv" id="lc1">
       <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">5:00<span class="ampm">pm</span></div>
-      <div class="ls">Misa de XV A&ntilde;os</div>
+      <div class="ls" data-en="Quincea&ntilde;era Mass">Misa de XV A&ntilde;os</div>
       <!-- 28px es el mayor tamano con el que "Nuestra Senora de Guadalupe"
            entra completo en su renglon; a 29 se parte en tres -->
-      <div class="lt" style="font-size:28px;line-height:1.25">Catedral de<br>Nuestra Se&ntilde;ora de Guadalupe</div>
+      <div class="lt" style="font-size:28px;line-height:1.25" data-en="Cathedral of<br>Our Lady of Guadalupe">Catedral de<br>Nuestra Se&ntilde;ora de Guadalupe</div>
       <p style="margin-top:12px">C. Jos&eacute; Mar&iacute;a Morelos 192, Primera</p>
       <p>21100 Mexicali, B.C.</p>
-      <a class="btn" href="https://maps.app.goo.gl/G8sam35y5hKmoJG59" target="_blank" rel="noopener">C&oacute;mo llegar</a>
+      <a class="btn" href="https://maps.app.goo.gl/G8sam35y5hKmoJG59" target="_blank" rel="noopener" data-en="Get directions">C&oacute;mo llegar</a>
     </div>
     <div class="loc-card rv" id="lc2">
       <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">7:00<span class="ampm">pm</span></div>
-      <div class="ls">Recepci&oacute;n</div>
+      <div class="ls" data-en="Reception">Recepci&oacute;n</div>
       <div class="lt">Sal&oacute;n Marquis</div>
-      <div class="lt-sub">en Salones Palladium</div>
+      <div class="lt-sub" data-en="at Salones Palladium">en Salones Palladium</div>
       <p style="margin-top:12px">Blvd. L&aacute;zaro C&aacute;rdenas 1085, Las Flores</p>
       <p>21330 Mexicali, B.C.</p>
-      <a class="btn" href="https://maps.app.goo.gl/8pGzwjazEzK1Lfrf6" target="_blank" rel="noopener">C&oacute;mo llegar</a>
+      <a class="btn" href="https://maps.app.goo.gl/8pGzwjazEzK1Lfrf6" target="_blank" rel="noopener" data-en="Get directions">C&oacute;mo llegar</a>
     </div>
     <div class="valet-note rv">
       <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -789,16 +833,16 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
         <circle cx="33" cy="30" r="4" stroke="#C9A044" stroke-width="2" fill="none"/>
         <path d="M11 36 L37 36" stroke="#C9A044" stroke-width="1.3" opacity=".5"/>
       </svg>
-      Valet Parking disponible
+      <span data-en="Valet parking available">Valet Parking disponible</span>
     </div>
   </section>
 
   <!-- CALENDAR -->
   <section class="rv cal-c" id="scal">
-    <div class="eyebrow">No lo olvides</div>
-    <h2 class="sec-title">Gu&aacute;rdalo</h2>
-    <p>Agrega el evento a tu calendario</p>
-    <a class="btn" id="gcalBtn" href="#" target="_blank">A&ntilde;adir a Google Calendar</a>
+    <div class="eyebrow" data-en="Don't forget">No lo olvides</div>
+    <h2 class="sec-title" data-en="Save the Date">Gu&aacute;rdalo</h2>
+    <p data-en="Add the event to your calendar">Agrega el evento a tu calendario</p>
+    <a class="btn" id="gcalBtn" href="#" target="_blank" data-en="Add to Google Calendar">A&ntilde;adir a Google Calendar</a>
   </section>
 
   <div class="orn rv">
@@ -811,42 +855,42 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- ITINERARIO V3 (cristal-humberto centered glow) -->
   <section id="siti" class="section-bg">
-    <div class="eyebrow rv">Programa del D&iacute;a</div>
-    <h2 class="sec-title rv">Itinerario</h2>
+    <div class="eyebrow rv" data-en="Schedule of the Day">Programa del D&iacute;a</div>
+    <h2 class="sec-title rv" data-en="Itinerary">Itinerario</h2>
     <div class="itv3">
       <div class="itv3-track"></div>
       <div class="itv3-glow" id="itvGlow"></div>
       <div class="itv3-item rv">
         <div class="itv3-gem"></div>
         <div class="itv3-time">5:00<span class="ampm">pm</span></div>
-        <div class="itv3-ev">Misa de XV A&ntilde;os</div>
-        <div class="itv3-sub">Catedral</div>
+        <div class="itv3-ev" data-en="Quincea&ntilde;era Mass">Misa de XV A&ntilde;os</div>
+        <div class="itv3-sub" data-en="Cathedral">Catedral</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
         <div class="itv3-time">7:00<span class="ampm">pm</span></div>
-        <div class="itv3-ev">Recepci&oacute;n</div>
+        <div class="itv3-ev" data-en="Reception">Recepci&oacute;n</div>
         <div class="itv3-sub">Salón Marquis</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-dim"></div>
         <div class="itv3-time">7:40<span class="ampm">pm</span></div>
-        <div class="itv3-ev">Vals</div>
+        <div class="itv3-ev" data-en="Waltz">Vals</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
         <div class="itv3-time">8:00<span class="ampm">pm</span></div>
-        <div class="itv3-ev">Cena</div>
+        <div class="itv3-ev" data-en="Dinner">Cena</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-dim"></div>
         <div class="itv3-time">9:00<span class="ampm">pm</span></div>
-        <div class="itv3-ev">Baile y Celebraci&oacute;n</div>
+        <div class="itv3-ev" data-en="Dancing &amp; Celebration">Baile y Celebraci&oacute;n</div>
       </div>
       <div class="itv3-item rv">
         <div class="itv3-gem itv3-gem-white"></div>
         <div class="itv3-time">1:00<span class="ampm">am</span></div>
-        <div class="itv3-ev">Fin de la Fiesta</div>
+        <div class="itv3-ev" data-en="End of the Party">Fin de la Fiesta</div>
       </div>
     </div>
   </section>
@@ -861,27 +905,27 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- DRESS CODE -->
   <section class="rv section-bg" id="sdc">
-    <div class="eyebrow">Etiqueta</div>
+    <div class="eyebrow" data-en="Attire">Etiqueta</div>
     <h2 class="sec-title">Dress Code</h2>
     <div class="dc-note">Formal</div>
 
     <div class="dc-figures">
       <div class="dc-fig">
         <img src="./caballero.png" alt="Caballero de traje formal negro" loading="lazy">
-        <div class="dc-fig-name">Caballeros</div>
+        <div class="dc-fig-name" data-en="Gentlemen">Caballeros</div>
       </div>
       <div class="dc-divider" aria-hidden="true"></div>
       <div class="dc-fig">
         <img src="./dama.png" alt="Dama de vestido formal largo" loading="lazy">
-        <div class="dc-fig-name">Damas</div>
+        <div class="dc-fig-name" data-en="Ladies">Damas</div>
       </div>
     </div>
 
     <div class="dc-avoid">
-      Color sugerido <span class="avoid-dot is-ok" style="background:#0e0200;border-color:rgba(255,255,255,.55)"></span> Negro
+      <span data-en="Suggested color">Color sugerido</span> <span class="avoid-dot is-ok" style="background:#0e0200;border-color:rgba(255,255,255,.55)"></span> <span data-en="Black">Negro</span>
     </div>
     <div class="dc-avoid">
-      Evitar <span class="avoid-dot" style="background:#6E0D25;"></span> Guinda
+      <span data-en="Avoid">Evitar</span> <span class="avoid-dot" style="background:#6E0D25;"></span> <span data-en="Burgundy">Guinda</span>
     </div>
   </section>
 
@@ -913,7 +957,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
         <div class="wheel-card"><img src="./foto-giselle-13.jpg" alt="Giselle"></div>
       </div>
     </div>
-    <p class="gal-hint rv">Arrastra para girar</p>
+    <p class="gal-hint rv" data-en="Drag to rotate">Arrastra para girar</p>
   </section>
 
   <div class="orn rv">
@@ -926,10 +970,10 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
   <!-- LLUVIA DE SOBRES (azucena style) -->
   <section id="sgifts" class="section-bg">
-    <p class="eyebrow rv">Con Cari&ntilde;o</p>
-    <h2 class="sec-title rv">Un Detalle para Giselle</h2>
-    <p class="gift-lead rv">Tu presencia es nuestro mejor regalo.</p>
-    <p class="gift-intro rv">
+    <p class="eyebrow rv" data-en="With Love">Con Cari&ntilde;o</p>
+    <h2 class="sec-title rv" data-en="A Gift for Giselle">Un Detalle para Giselle</h2>
+    <p class="gift-lead rv" data-en="Your presence is our greatest gift.">Tu presencia es nuestro mejor regalo.</p>
+    <p class="gift-intro rv" data-en="For those who wish to give Giselle a special gift, we have arranged two options:">
       Para quienes deseen obsequiarle un detalle especial a Giselle,
       hemos dispuesto dos opciones:
     </p>
@@ -938,7 +982,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       <div class="gift-opt-ttl">
         <svg viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>Lluvia de Sobres
+        </svg><span data-en="Shower of Envelopes">Lluvia de Sobres</span>
       </div>
       <div class="lluvia-icon">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
@@ -948,11 +992,11 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
           <path d="M58 52 L40 36" stroke="#ff0000" stroke-width="1.4" stroke-linecap="round" opacity=".6"/>
         </svg>
       </div>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.85);margin-bottom:6px" data-en="Shower of envelopes on the day of the event">
         Lluvia de sobres el d&iacute;a del evento
       </p>
       <div class="lluvia-info-wrap">
-        <button class="lluvia-info-btn" type="button" onclick="openLluviaModal()">&iquest;Qu&eacute; es?</button>
+        <button class="lluvia-info-btn" type="button" onclick="openLluviaModal()" data-en="What is it?">&iquest;Qu&eacute; es?</button>
       </div>
     </div>
 
@@ -960,7 +1004,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       <div class="gift-opt-ttl">
         <svg viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>Mesa de Regalos en Amazon
+        </svg><span data-en="Amazon Gift Registry">Mesa de Regalos en Amazon</span>
       </div>
       <div class="gbx" id="giftBox">
         <button type="button" class="gbx-present" id="giftBtn"
@@ -989,19 +1033,19 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
           </svg>
         </button>
         <div class="gbx-confetti" id="giftConfetti" aria-hidden="true"></div>
-        <p class="gbx-tap">Toca el regalo</p>
+        <p class="gbx-tap" data-en="Tap the gift">Toca el regalo</p>
       </div>
 
       <div class="gift-links" id="giftLinks" hidden>
         <a href="https://www.amazon.com/hz/wishlist/ls/25KNLJLXR7KQ6?ref_=wl_share"
            class="gf-card" target="_blank" rel="noopener">
           <span class="gf-brand"><img src="./amazon.svg" alt="Amazon" width="603" height="182" loading="lazy"></span>
-          <span class="gf-nt">Ver la lista de Giselle &rarr;</span>
+          <span class="gf-nt" data-en="View Giselle's registry &rarr;">Ver la lista de Giselle &rarr;</span>
         </a>
       </div>
     </div>
 
-    <p class="gift-close rv">
+    <p class="gift-close rv" data-en="Your love and company will make this day an unforgettable memory for Giselle.">
       Su cari&ntilde;o y compa&ntilde;&iacute;a har&aacute;n de este d&iacute;a
       un recuerdo inolvidable para Giselle.
     </p>
@@ -1036,9 +1080,9 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
         </g>
       </svg>
 
-      <div class="eyebrow">Confirma tu Asistencia</div>
-      <h2 class="rsvp-title">Tu presencia <em>significa</em> todo</h2>
-      <p class="rsvp-text">Nos encantar&iacute;a contar contigo en este d&iacute;a tan especial. Por favor conf&iacute;rmanos tu asistencia.</p>
+      <div class="eyebrow" data-en="RSVP">Confirma tu Asistencia</div>
+      <h2 class="rsvp-title" data-en="Your presence <em>means</em> everything">Tu presencia <em>significa</em> todo</h2>
+      <p class="rsvp-text" data-en="We would love to have you with us on this special day. Please confirm your attendance.">Nos encantar&iacute;a contar contigo en este d&iacute;a tan especial. Por favor conf&iacute;rmanos tu asistencia.</p>
 
       <div class="rsvp-divider">
         <svg class="rsvp-divider-heart" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
@@ -1046,27 +1090,27 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 
       <p id="rsvp-pases-note" style="display:none"></p>
       <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
-        <span class="rsvp-pases-label">Pases</span>
+        <span class="rsvp-pases-label" data-en="Passes">Pases</span>
         <span class="rsvp-pases-num" id="rsvp-pases-num">…</span>
       </div>
 
       <div class="rsvp-toggle">
-        <button class="rsvp-toggle-btn" id="btnYes" type="button">Asistiré</button>
-        <button class="rsvp-toggle-btn" id="btnNo" type="button">No podré asistir</button>
+        <button class="rsvp-toggle-btn" id="btnYes" type="button" data-en="I will attend">Asistiré</button>
+        <button class="rsvp-toggle-btn" id="btnNo" type="button" data-en="I can&#39;t attend">No podré asistir</button>
       </div>
 
       <div class="rsvp-fields" id="rsvp-fields" style="display:none"></div>
 
       <button class="btn-wa" id="rsvpBtn" type="button">
-        <span id="rsvp-btn-text">Confirmar asistencia</span>
+        <span id="rsvp-btn-text" data-en="Confirm attendance">Confirmar asistencia</span>
       </button>
 
       <p id="rsvp-feedback"></p>
 
       <div class="rsvp-deadline">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5z"/></svg>
-        <span class="sin-corte">Confirmar antes del &middot;</span>
-        <span class="sin-corte">31 de agosto de 2026</span>
+        <span class="sin-corte" data-en="Please reply by &middot;">Confirmar antes del &middot;</span>
+        <span class="sin-corte" data-en="August 31, 2026">31 de agosto de 2026</span>
       </div>
     </div>
   </section>
@@ -1074,7 +1118,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   <!-- FOOTER -->
   <footer>
     <div class="fn">Giselle Alessandra</div>
-    <div class="fd">19 &middot; Septiembre &middot; MMXXVI</div>
+    <div class="fd" data-en="19 &middot; September &middot; MMXXVI">19 &middot; Septiembre &middot; MMXXVI</div>
   </footer>
 
 </div>
@@ -1083,8 +1127,8 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
 <div class="lluvia-modal-overlay" id="lluviaModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lluviaModalTitle">
   <div class="lluvia-modal" role="document">
     <button type="button" class="lluvia-modal-close" onclick="closeLluviaModal()" aria-label="Cerrar">&times;</button>
-    <h3 class="lluvia-modal-title" id="lluviaModalTitle">Lluvia de Sobres</h3>
-    <p class="lluvia-modal-text">La lluvia de sobres es una costumbre en la que los invitados entregan dinero en efectivo, en un sobre, en lugar de un regalo. &iexcl;Tu presencia y cari&ntilde;o son el mejor obsequio!</p>
+    <h3 class="lluvia-modal-title" id="lluviaModalTitle" data-en="Shower of Envelopes">Lluvia de Sobres</h3>
+    <p class="lluvia-modal-text" data-en="A shower of envelopes is a custom where guests give cash in an envelope instead of a gift. Your presence and affection are the best present!">La lluvia de sobres es una costumbre en la que los invitados entregan dinero en efectivo, en un sobre, en lugar de un regalo. &iexcl;Tu presencia y cari&ntilde;o son el mejor obsequio!</p>
   </div>
 </div>
 
@@ -1116,6 +1160,77 @@ window.scrollTo(0,0);
 history.scrollRestoration='manual';
 gsap.registerPlugin(ScrollTrigger);
 
+/* ── IDIOMA ──────────────────────────────────────────────────────────────
+   No hay dos copias del texto escondiendose entre si: cada elemento lleva su
+   traduccion en data-en y aqui se cambia el contenido del MISMO nodo. Solo
+   existe un texto a la vez, asi que los idiomas no pueden traslaparse.
+   Los mensajes que el RSVP escribe sobre la marcha viven en window.T.       */
+var IDIOMA='es';
+
+var FRASES={
+  es:{
+    invitacionPara:'Esta invitación es para ',
+    tuNombre:'Tu nombre completo',
+    invitado:'Invitado ',
+    actualizar:'Actualizar respuesta',
+    yaConfirmado:'¡Ya tienes confirmada tu asistencia! Puedes actualizar tu respuesta.',
+    yaDeclinado:'Ya tienes registrado que no podrás asistir. Puedes cambiar tu respuesta.',
+    fueraDePlazo:'Fecha límite alcanzada',
+    plazoVencido:'La fecha para confirmar asistencia ha pasado.',
+    eligeOpcion:'Por favor selecciona si asistirás o no.',
+    faltaNombre:'Por favor escribe al menos un nombre.',
+    enviando:'Enviando…',
+    confirmar:'Confirmar asistencia',
+    errorRed:'Error de conexión. Intenta de nuevo.'
+  },
+  en:{
+    invitacionPara:'This invitation is for ',
+    tuNombre:'Your full name',
+    invitado:'Guest ',
+    actualizar:'Update response',
+    yaConfirmado:'Your attendance is confirmed! You can update your response.',
+    yaDeclinado:'We have you down as unable to attend. You can change your response.',
+    fueraDePlazo:'Deadline passed',
+    plazoVencido:'The deadline to confirm attendance has passed.',
+    eligeOpcion:'Please select whether you will attend.',
+    faltaNombre:'Please enter at least one name.',
+    enviando:'Sending…',
+    confirmar:'Confirm attendance',
+    errorRed:'Connection error. Please try again.'
+  }
+};
+window.T=FRASES.es;
+
+function aplicarIdioma(lang){
+  IDIOMA=lang;
+  window.T=FRASES[lang];
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    /* la primera vez se guarda el original, para poder volver a español */
+    if(!el.hasAttribute('data-es'))el.setAttribute('data-es',el.innerHTML.trim());
+    el.innerHTML=el.getAttribute('data-'+lang);
+  });
+}
+
+(function(){
+  var pantalla=document.getElementById('lang-screen');
+  if(!pantalla)return;
+  function elegir(lang){
+    aplicarIdioma(lang);
+    var irAlSobre=function(){
+      pantalla.style.display='none';
+      if(window.mostrarSobre)window.mostrarSobre();
+    };
+    if(window.gsap)gsap.to(pantalla,{opacity:0,duration:.7,ease:'power2.inOut',onComplete:irAlSobre});
+    else irAlSobre();
+  }
+  pantalla.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click',function(){elegir(b.getAttribute('data-lang'))});
+  });
+  if(window.gsap)gsap.to(pantalla,{opacity:1,duration:.9,ease:'power2.out',delay:.25});
+  else pantalla.style.opacity=1;
+})();
+
 /* ── ENVELOPE ── */
 (function(){
   var envScreen=document.getElementById('envelope-screen'),
@@ -1123,9 +1238,12 @@ gsap.registerPlugin(ScrollTrigger);
       envVideo=document.getElementById('env-video'),
       hint=document.getElementById('env-hint'),
       opened=false;
-  gsap.timeline()
-    .to(envScreen,{opacity:1,duration:1.2,ease:'power2.out',delay:.3})
-    .to(hint,{opacity:1,duration:.9,ease:'power2.out'},'-=.5');
+  /* el sobre ya no aparece solo: espera a que se elija el idioma */
+  window.mostrarSobre=function(){
+    gsap.timeline()
+      .to(envScreen,{opacity:1,duration:1.2,ease:'power2.out'})
+      .to(hint,{opacity:1,duration:.9,ease:'power2.out'},'-=.5');
+  };
   var flashStarted=false,invitationReady=false;
   function prepareInvitation(){
     if(invitationReady)return;invitationReady=true;
@@ -1398,7 +1516,7 @@ function initWheel(){
   if(!btnConf || !btnYes) return;
 
   if(urlPara){
-    noteEl.textContent = 'Esta invitación es para ' + urlPara;
+    noteEl.textContent = T.invitacionPara + urlPara;
     noteEl.style.display = 'block';
     dispEl.style.display = 'flex';
     btnYes.disabled = true;
@@ -1413,7 +1531,7 @@ function initWheel(){
       var inp = document.createElement('input');
       inp.type = 'text';
       inp.className = 'rsvp-input';
-      inp.placeholder = n === 1 ? 'Tu nombre completo' : 'Invitado ' + (i+1);
+      inp.placeholder = n === 1 ? T.tuNombre : T.invitado + (i+1);
       inp.autocomplete = 'off';
       inp.maxLength = 60;
       inp.value = savedNames[i] || '';
@@ -1456,10 +1574,8 @@ function initWheel(){
             savedNames = d.nombres_confirmados.slice();
           }
           selectRsvp(d.estado === 'confirmado' ? 'yes' : 'no');
-          btnText.textContent = 'Actualizar respuesta';
-          feedEl.textContent = d.estado === 'confirmado'
-            ? '¡Ya tienes confirmada tu asistencia! Puedes actualizar tu respuesta.'
-            : 'Ya tienes registrado que no podrás asistir. Puedes cambiar tu respuesta.';
+          btnText.textContent = T.actualizar;
+          feedEl.textContent = d.estado === 'confirmado' ? T.yaConfirmado : T.yaDeclinado;
         }
       })
       .catch(function(){
@@ -1473,15 +1589,15 @@ function initWheel(){
     btnYes.disabled = true;
     btnNo.disabled  = true;
     btnConf.disabled = true;
-    btnText.textContent = 'Fecha límite alcanzada';
-    feedEl.textContent = 'La fecha para confirmar asistencia ha pasado.';
+    btnText.textContent = T.fueraDePlazo;
+    feedEl.textContent = T.plazoVencido;
   }
 
   btnConf.addEventListener('click', function(){
     if(frozen) return;
     if(!rsvpChoice){
       feedEl.style.color = '#ff5a5a';
-      feedEl.textContent = 'Por favor selecciona si asistirás o no.';
+      feedEl.textContent = T.eligeOpcion;
       return;
     }
     var nombres = [];
@@ -1493,11 +1609,11 @@ function initWheel(){
       }
       if(nombres.length === 0){
         feedEl.style.color = '#ff5a5a';
-        feedEl.textContent = 'Por favor escribe al menos un nombre.';
+        feedEl.textContent = T.faltaNombre;
         return;
       }
     }
-    btnText.textContent = 'Enviando…';
+    btnText.textContent = T.enviando;
     btnConf.disabled = true;
     feedEl.textContent = ''; feedEl.style.color = '';
     fetch(PANEL_API, {
@@ -1513,7 +1629,7 @@ function initWheel(){
     })
     .then(function(r){ return r.json(); })
     .then(function(){
-      btnText.textContent = 'Actualizar respuesta';
+      btnText.textContent = T.actualizar;
       btnConf.disabled = false;
       feedEl.style.color = 'var(--gold)';
       feedEl.textContent = rsvpChoice === 'yes'
@@ -1521,10 +1637,10 @@ function initWheel(){
         : 'Hemos registrado que no podrás asistir. ¡Gracias por avisarnos!';
     })
     .catch(function(){
-      btnText.textContent = 'Confirmar asistencia';
+      btnText.textContent = T.confirmar;
       btnConf.disabled = false;
       feedEl.style.color = '#ff5a5a';
-      feedEl.textContent = 'Error de conexión. Intenta de nuevo.';
+      feedEl.textContent = T.errorRed;
     });
   });
 })();
