@@ -806,7 +806,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
   <section id="subic" class="section-bg">
     <h2 class="sec-title rv" data-en="Location">Ubicaci&oacute;n</h2>
     <div class="loc-card rv" id="lc1">
-      <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">5:00<span class="ampm">pm</span></div>
+      <div class="lh" style="font-size:52px;letter-spacing:6px;margin-bottom:4px">4:00<span class="ampm">pm</span></div>
       <div class="ls" data-en="Quincea&ntilde;era Mass">Misa de XV A&ntilde;os</div>
       <!-- 28px es el mayor tamano con el que "Nuestra Senora de Guadalupe"
            entra completo en su renglon; a 29 se parte en tres -->
@@ -862,7 +862,7 @@ footer .fd{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14
       <div class="itv3-glow" id="itvGlow"></div>
       <div class="itv3-item rv">
         <div class="itv3-gem"></div>
-        <div class="itv3-time">5:00<span class="ampm">pm</span></div>
+        <div class="itv3-time">4:00<span class="ampm">pm</span></div>
         <div class="itv3-ev" data-en="Quincea&ntilde;era Mass">Misa de XV A&ntilde;os</div>
         <div class="itv3-sub" data-en="Cathedral">Catedral</div>
       </div>
@@ -1311,7 +1311,7 @@ function initScrollReveal(){
 
 /* ── COUNTDOWN (jennifer flip) ── */
 function initCountdown(){
-  var target=new Date('2026-09-19T17:00:00-07:00').getTime();
+  var target=new Date('2026-09-19T16:00:00-07:00').getTime();
   var els={D:document.getElementById('cdD'),H:document.getElementById('cdH'),
            M:document.getElementById('cdM'),S:document.getElementById('cdS')};
   var prev={D:'',H:'',M:'',S:''};
@@ -1485,10 +1485,10 @@ function initWheel(){
 /* ── GOOGLE CALENDAR ── */
 (function(){
   var t=encodeURIComponent('XV Años de Giselle Alessandra Guerrero');
-  var d=encodeURIComponent('Celebración de XV Años: misa 5:00 pm en la Catedral de Nuestra Señora de Guadalupe — recepción 7:00 pm en Salón Marquis, Mexicali, B.C.');
+  var d=encodeURIComponent('Celebración de XV Años: misa 4:00 pm en la Catedral de Nuestra Señora de Guadalupe — recepción 7:00 pm en Salón Marquis, Mexicali, B.C.');
   var l=encodeURIComponent('Salón Marquis, Salones Palladium, Blvd. Lázaro Cárdenas 1085, Las Flores, 21330 Mexicali, B.C., México');
   document.getElementById('gcalBtn').href=
-    'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+t+'&dates=20260920T000000Z/20260920T080000Z&details='+d+'&location='+l;
+    'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+t+'&dates=20260919T230000Z/20260920T080000Z&details='+d+'&location='+l;
 })();
 
 /* ── RSVP PANEL INTEGRATION (guard silencioso + caché de nombres) ── */
